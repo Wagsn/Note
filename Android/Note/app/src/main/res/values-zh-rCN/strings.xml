@@ -35,4 +35,5 @@
     <string name="about">关于</string>
     <string name="action_undo">Undo</string>
     <string name="action_redo">Redo</string>
+    <string name="action_save">Save</string>
 </resources>
