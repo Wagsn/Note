@@ -1,4 +1,4 @@
-package net.wagsn.note.storage.db.greendao;
+package net.wagsn.note.storage.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

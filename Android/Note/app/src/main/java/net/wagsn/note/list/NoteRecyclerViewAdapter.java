@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import net.wagsn.note.R;
 import net.wagsn.note.edit.NoteEditActivity;
-import net.wagsn.note.storage.NoteStore;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

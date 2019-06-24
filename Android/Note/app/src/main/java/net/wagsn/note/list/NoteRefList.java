@@ -3,11 +3,10 @@ package net.wagsn.note.list;
 import android.support.annotation.NonNull;
 
 import net.wagsn.note.storage.db.DBManager;
-import net.wagsn.note.storage.db.greendao.NoteItemDao;
+import net.wagsn.note.storage.db.NoteItemDao;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class NoteRefList extends ArrayList<NoteRefList.Ref> {
 

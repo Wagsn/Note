@@ -2,7 +2,6 @@ package net.wagsn.note.about;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 
 import net.wagsn.note.R;
@@ -16,9 +15,9 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(findViewById(R.id.toolbar));
 
+        // TODO 关于页改为XML布局，其它信息采用HTML
         webView = findViewById(R.id.web_view);
         webView.loadUrl("file:///android_asset/about.html");
     }

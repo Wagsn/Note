@@ -1,15 +1,11 @@
 package net.wagsn.note.list;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
 import net.wagsn.note.storage.db.DBManager;
-import net.wagsn.note.storage.db.greendao.NoteItemDao;
+import net.wagsn.note.storage.db.NoteItemDao;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 /**

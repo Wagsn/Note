@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -11,10 +14,10 @@ import android.widget.EditText;
 import net.wagsn.note.R;
 import net.wagsn.note.list.NoteItem;
 import net.wagsn.note.list.NoteListStore;
-import net.wagsn.note.list.NoteRefList;
+import net.wagsn.util.PerformEdit;
 
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -24,6 +27,7 @@ public class NoteEditFragment extends Fragment {
     private static final String TAG = "NoteEditFragment";
 
     private ViewHolder holder;
+    PerformEdit mPerformEdit;
     private static final String NOTE_ITEM = "NOTE_ITEM";
 
     public NoteEditFragment() {
@@ -36,10 +40,40 @@ public class NoteEditFragment extends Fragment {
         View view = inflater.inflate(R.layout.edit_fragment, container, false);
         holder = new ViewHolder(view);
 
+        mPerformEdit = new PerformEdit(holder.contentView);
+
         if(savedInstanceState!=null){
             holder.item = (NoteItem) savedInstanceState.get(NOTE_ITEM);
         }
+
+        EventBus.getDefault().register(this);
+
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_editor_frag, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_undo://撤销
+                mPerformEdit.undo();
+                return true;
+            case R.id.action_redo://重做
+                mPerformEdit.redo();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     public static class ViewHolder {
@@ -67,14 +101,18 @@ public class NoteEditFragment extends Fragment {
         }
     }
 
-    public void save(){
+    @Subscribe
+    public void save(NoteEditActivity.NoteSaveEvent event){
         NoteItem item = holder.getItem();
         NoteListStore.get().add(item);
         Log.d(TAG, "save: "+item);
-        Objects.requireNonNull(getActivity()).finish();
+        if (getActivity()!=null){
+            getActivity().finish();
+        }
     }
 
-    public void show(String id){
-        NoteListStore.get().stream().filter(n -> n.id.equals(id)).findFirst().ifPresent(item -> holder.setItem(item));
+    @Subscribe
+    public void show(NoteEditActivity.NoteShowEvent event){
+        NoteListStore.get().stream().filter(n -> n.id.equals(event.id)).findFirst().ifPresent(item -> holder.setItem(item));
     }
 }

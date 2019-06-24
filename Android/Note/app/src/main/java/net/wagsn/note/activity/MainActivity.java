@@ -2,10 +2,9 @@ package net.wagsn.note.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 
@@ -24,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     @Bind(R.id.toolbar)
     private Toolbar toolbar;
-    @Bind(R.id.fab)
-    private FloatingActionButton fab;
-    @Bind(R.id.nav_view)
-    private NavigationView navigationView;
 
     NavigationViewExecutor executor;
 
@@ -35,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d(TAG, "onCreate: 主页");
 
         // View Bind
         ViewBinder.bind(this);
@@ -44,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         setSupportActionBar(toolbar);
-        fab.setOnClickListener(view -> {
+        findViewById(R.id.fab).setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, NoteEditActivity.class);
             startActivity(intent);
         });

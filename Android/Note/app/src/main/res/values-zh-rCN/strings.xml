@@ -17,8 +17,10 @@
 
     <string name="title_activity_edit">编辑</string>
 
-    <string name="title">请输入标题</string>
-    <string name="content">请输入内容</string>
+    <string name="title_input">请输入标题</string>
+    <string name="content_input">请输入内容</string>
+    <string name="title">标题</string>
+    <string name="content">内容</string>
 
     <string name="title_activity_login">登陆</string>
     <string name="prompt_email">邮箱</string>
@@ -31,4 +33,6 @@
     <string name="login_failed">"登陆失败"</string>
     <string name="menu_login">登陆</string>
     <string name="about">关于</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_redo">Redo</string>
 </resources>

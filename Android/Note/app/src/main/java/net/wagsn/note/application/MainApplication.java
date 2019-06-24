@@ -3,7 +3,6 @@ package net.wagsn.note.application;
 import android.app.Application;
 import android.util.Log;
 
-import net.wagsn.note.storage.NoteStore;
 import net.wagsn.note.storage.db.DBManager;
 
 public class MainApplication extends Application {
@@ -15,6 +14,5 @@ public class MainApplication extends Application {
         Log.d(TAG, "onCreate: 应用初始化");
 
         DBManager.get().init(this);
-//        NoteStore.get().init(DBManager.get().getNoteItemDao());
     }
 }

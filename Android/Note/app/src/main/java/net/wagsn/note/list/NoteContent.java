@@ -14,12 +14,12 @@ public class NoteContent {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<NoteItem> ITEMS = new ArrayList<NoteItem>();
+    public static final List<NoteItem> ITEMS = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, NoteItem> ITEM_MAP = new HashMap<String, NoteItem>();
+    public static final Map<String, NoteItem> ITEM_MAP = new HashMap<>();
 
     private static final int COUNT = 25;
 

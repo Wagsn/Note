@@ -4,8 +4,6 @@ import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
 
-import net.wagsn.note.storage.db.greendao.DaoMaster;
-
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.internal.DaoConfig;
@@ -17,17 +15,17 @@ import java.util.List;
 /**
  * 数据库迁移工具
  */
-
 public class MigrationHelper {
     private static final String CONVERSION_CLASS_NOT_FOUND_EXCEPTION = "MIGRATION HELPER - CLASS DOESN'T MATCH WITH THE CURRENT PARAMETERS";
     private static MigrationHelper instance;
 
-    public static MigrationHelper getInstance() {
+    public static MigrationHelper get() {
         if(instance == null) {
             instance = new MigrationHelper();
         }
         return instance;
     }
+
     public void migrate(Database db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
         generateTempTables(db, daoClasses);
         DaoMaster.dropAllTables(db, true);

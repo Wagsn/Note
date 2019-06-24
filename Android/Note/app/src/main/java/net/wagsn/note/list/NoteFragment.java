@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.wagsn.note.R;
-import net.wagsn.note.storage.NoteStore;
 
 /**
  * A fragment representing a list of Items.
