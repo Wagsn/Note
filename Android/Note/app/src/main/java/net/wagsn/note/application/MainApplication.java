@@ -15,6 +15,6 @@ public class MainApplication extends Application {
         Log.d(TAG, "onCreate: 应用初始化");
 
         DBManager.get().init(this);
-        NoteStore.get().init(DBManager.get().getNoteItemDao());
+//        NoteStore.get().init(DBManager.get().getNoteItemDao());
     }
 }

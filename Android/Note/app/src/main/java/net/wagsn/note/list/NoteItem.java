@@ -18,6 +18,8 @@ public class NoteItem implements Serializable {
     public String title;
     @Property
     public String content;
+    // 笔记类型，1纯文本，2Html，3Markdown
+//    public int type;
     @Property
     public Date time;
     @Property

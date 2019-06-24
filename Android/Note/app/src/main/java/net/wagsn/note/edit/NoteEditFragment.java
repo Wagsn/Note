@@ -9,11 +9,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import net.wagsn.note.R;
-import net.wagsn.note.list.NoteContent;
 import net.wagsn.note.list.NoteItem;
-import net.wagsn.note.storage.NoteStore;
+import net.wagsn.note.list.NoteListStore;
+import net.wagsn.note.list.NoteRefList;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -68,16 +69,12 @@ public class NoteEditFragment extends Fragment {
 
     public void save(){
         NoteItem item = holder.getItem();
-        // 这两个合并到一起
-        NoteContent.addItem(item);
-        NoteStore.get().save(item);
+        NoteListStore.get().add(item);
         Log.d(TAG, "save: "+item);
         Objects.requireNonNull(getActivity()).finish();
     }
 
     public void show(String id){
-        NoteItem item = NoteStore.get().load(id);
-        if(item != null)
-            holder.setItem(item);
+        NoteListStore.get().stream().filter(n -> n.id.equals(id)).findFirst().ifPresent(item -> holder.setItem(item));
     }
 }

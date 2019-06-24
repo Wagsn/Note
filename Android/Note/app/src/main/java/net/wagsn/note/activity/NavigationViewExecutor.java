@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import net.wagsn.note.R;
+import net.wagsn.note.about.AboutActivity;
 import net.wagsn.note.login.ui.LoginActivity;
 import net.wagsn.util.binding.Bind;
 import net.wagsn.util.binding.ViewBinder;
@@ -35,6 +36,9 @@ public class NavigationViewExecutor implements NavigationView.OnNavigationItemSe
 
         if(id == R.id.nav_login){
             startActivity(LoginActivity.class);
+        }
+        if (id == R.id.nav_about) {
+            startActivity(AboutActivity.class);
         }
         if (id == R.id.nav_home) {
             // Handle the camera action

@@ -22,6 +22,7 @@ public class NoteFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private NoteRecyclerViewAdapter adapter;
+    private NoteListStore store = NoteListStore.get();
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -63,9 +64,10 @@ public class NoteFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            NoteContent.clear();
-            NoteContent.ITEMS.addAll(NoteStore.get().loadAll());
-            adapter = new NoteRecyclerViewAdapter(NoteContent.ITEMS);
+//            NoteContent.clear();
+//            NoteContent.ITEMS.addAll(NoteStore.get().loadAll());
+//            adapter = new NoteRecyclerViewAdapter(NoteContent.ITEMS);
+            adapter = new NoteRecyclerViewAdapter(store);
             recyclerView.setAdapter(adapter);
         }
         return view;
@@ -76,8 +78,8 @@ public class NoteFragment extends Fragment {
         super.onResume();
 
         // TODO replace to NoteStore, move to Presenter. presenter.resume();
-        NoteContent.ITEMS.clear();
-        NoteContent.ITEMS.addAll(NoteStore.get().loadAll());  // Store.get().loadAll<NoteItem>();
+//        NoteContent.ITEMS.clear();
+//        NoteContent.ITEMS.addAll(NoteStore.get().loadAll());  // Store.get().loadAll<NoteItem>();
         adapter.notifyDataSetChanged();
     }
 

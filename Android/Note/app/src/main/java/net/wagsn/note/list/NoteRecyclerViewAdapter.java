@@ -14,6 +14,7 @@ import net.wagsn.note.edit.NoteEditActivity;
 import net.wagsn.note.storage.NoteStore;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
 
     // Model
     private final List<NoteItem> mValues;
-    private final NoteStore store = NoteStore.get();
+//    private final NoteStore store = NoteStore.get();
 
     NoteRecyclerViewAdapter(List<NoteItem> items) {
         mValues = items;
@@ -84,7 +85,7 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
             else
                 mContentView.setVisibility(View.VISIBLE);
             mContentView.setText(mItem.content);
-            mTimeView.setText(dateFormat.format(mItem.time));
+            mTimeView.setText(dateFormat.format(mItem.time==null?new Date():mItem.time));
         }
 
         @Override
