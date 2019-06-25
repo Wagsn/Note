@@ -1,5 +1,6 @@
 package net.wagsn.note.edit;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,13 +43,22 @@ public class NoteEditFragment extends Fragment {
 
         mPerformEdit = new PerformEdit(holder.contentView);
 
-        if(savedInstanceState!=null){
+        if(savedInstanceState != null){
             holder.item = (NoteItem) savedInstanceState.get(NOTE_ITEM);
         }
 
         EventBus.getDefault().register(this);
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    public void afterAcrivityCreated(){
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -65,6 +75,9 @@ public class NoteEditFragment extends Fragment {
                 return true;
             case R.id.action_redo://重做
                 mPerformEdit.redo();
+                return true;
+            case R.id.action_save:
+                NoteListStore.get().add(holder.getItem());
                 return true;
         }
         return super.onOptionsItemSelected(item);
