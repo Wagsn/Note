@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import net.wagsn.note.R;
-import net.wagsn.note.list.NoteItem;
+import net.wagsn.note.entity.NoteItem;
 import net.wagsn.note.list.NoteListStore;
 import net.wagsn.util.PerformEdit;
 

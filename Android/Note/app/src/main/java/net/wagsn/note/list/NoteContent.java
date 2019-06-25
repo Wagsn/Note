@@ -1,5 +1,7 @@
 package net.wagsn.note.list;
 
+import net.wagsn.note.entity.NoteItem;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

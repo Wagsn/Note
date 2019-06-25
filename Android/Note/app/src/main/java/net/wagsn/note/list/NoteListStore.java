@@ -1,5 +1,6 @@
 package net.wagsn.note.list;
 
+import net.wagsn.note.entity.NoteItem;
 import net.wagsn.note.storage.db.DBManager;
 import net.wagsn.note.storage.db.NoteItemDao;
 

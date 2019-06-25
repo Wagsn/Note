@@ -2,6 +2,7 @@ package net.wagsn.note.list;
 
 import android.support.annotation.NonNull;
 
+import net.wagsn.note.entity.NoteItem;
 import net.wagsn.note.storage.db.DBManager;
 import net.wagsn.note.storage.db.NoteItemDao;
 

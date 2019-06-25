@@ -1,4 +1,4 @@
-package net.wagsn.note.list;
+package net.wagsn.note.entity;
 
 import org.greenrobot.greendao.annotation.*;
 

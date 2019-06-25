@@ -1,6 +1,6 @@
 package net.wagsn.note.storage;
 
-import net.wagsn.note.list.NoteItem;
+import net.wagsn.note.entity.NoteItem;
 import net.wagsn.util.storage.AbstractStore;
 
 import org.greenrobot.greendao.AbstractDao;
