@@ -55,9 +55,11 @@ public class NoteEditFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        afterActivityCreated();
     }
 
-    public void afterAcrivityCreated(){
+    public void afterActivityCreated(){
         setHasOptionsMenu(true);
     }
 
@@ -126,6 +128,9 @@ public class NoteEditFragment extends Fragment {
 
     @Subscribe
     public void show(NoteEditActivity.NoteShowEvent event){
-        NoteListStore.get().stream().filter(n -> n.id.equals(event.id)).findFirst().ifPresent(item -> holder.setItem(item));
+        NoteListStore.get().stream().filter(n -> n.id.equals(event.id)).findFirst().ifPresent(item -> {
+            holder.setItem(item);
+            mPerformEdit.setDefaultText(item.getContent());
+        });
     }
 }

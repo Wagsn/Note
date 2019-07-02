@@ -36,14 +36,6 @@ public class NoteEditActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int itemId = item.getItemId();
-        if(itemId ==R.id.action_undo){
-//            mPerformEdit.undo();
-            return true;
-        }else if(itemId == R.id.action_redo){
-//            mPerformEdit.redo();
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

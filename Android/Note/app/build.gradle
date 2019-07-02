@@ -7,8 +7,9 @@ android {
         applicationId "net.wagsn.note"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 7
+        description "本次版本更新了：\r\n【文本编辑】添加Redo与Undo操作。"
+        versionName "1.0.5.190702_base" // 软件版本号由四部分组成，[主版本号].[子版本号].[阶段版本号].[日期版本号]_[希腊字母版本号]，希腊字母版本号共有5种，分别为：base、alpha、beta、RC、release。例如：1.1.1.051021_beta
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -18,8 +19,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
