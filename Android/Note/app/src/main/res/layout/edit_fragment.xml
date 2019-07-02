@@ -6,11 +6,12 @@
     tools:context=".edit.NoteEditFragment"
     tools:showIn="@layout/edit_activity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <EditText
@@ -44,7 +45,6 @@
             android:inputType="textMultiLine|textLongMessage"
             android:background="@android:color/white"
             android:gravity="top"
-            android:minHeight="200dp"
             android:padding="@dimen/activity_horizontal_margin"
             android:scrollHorizontally="false"
             android:scrollbars="vertical"

@@ -7,13 +7,17 @@ android {
         applicationId "net.wagsn.note"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode 7
-        description "本次版本更新了：\r\n【文本编辑】添加Redo与Undo操作。"
-        versionName "1.0.5.190702_base" // 软件版本号由四部分组成，[主版本号].[子版本号].[阶段版本号].[日期版本号]_[希腊字母版本号]，希腊字母版本号共有5种，分别为：base、alpha、beta、RC、release。例如：1.1.1.051021_beta
+        versionCode 9
+        description "本次版本更新了：\r\n【文本编辑】修复内容编辑框背景颜色。"
+        versionName "1.0.7.190702_base" // 软件版本号由四部分组成，[主版本号].[子版本号].[阶段版本号].[日期版本号]_[希腊字母版本号]，希腊字母版本号共有5种，分别为：base、alpha、beta、RC、release。例如：1.1.1.051021_beta
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+//            shrinkResources true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
