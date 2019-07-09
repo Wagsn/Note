@@ -24,6 +24,16 @@ public class Memo implements Serializable {
      */
     public List<Tag> tags;
 
+    /**
+     * 执行人
+     */
+    public List<User> executors;
+
+    /**
+     * 抄送人
+     */
+    public List<User> copiers;
+
 //    /**
 //     * 备注
 //     */
@@ -40,24 +50,24 @@ public class Memo implements Serializable {
     public Date startTime;
 
     /**
-     * 结束时间
+     * 结束（截止）时间
      */
     public Date endTime;
 
     /**
-     * 通知时间（[-]提前与[+]延后）
+     * 提醒（为空表示无提醒）
      */
-    public int[] notices;
+    public List<Remind> reminds;
 
     /**
-     * 重复（-每天、-每周、-每月、-每季、-每年）
+     * 重复
      */
-    public int[] repeats;
+    public List<Repeat> repeats;
 
     /**
-     * 已完成
+     * 业务状态（1-草稿、2-执行中、3-已取消、4-已完成）
      */
-    public boolean completed;
+    public int state;
 
     /**
      * 创建时间
