@@ -9,3 +9,14 @@
 /WebAPI/Note/Note/NoteForWindows/obj/Debug
 /WebAPI/Note/Note/NoteLib/bin/Debug/netstandard2.0
 /WebAPI/Note/Note/NoteLib/obj
+/DotNET/.vs
+/DotNET/NoteCore/bin/Debug/netstandard2.0
+/DotNET/NoteCore/obj
+/DotNET/NoteForServer/bin/Debug/netcoreapp2.1
+/DotNET/NoteForServer/obj
+/DotNET/NoteForWindows/bin/Debug
+/DotNET/NoteForWindows/obj/Debug
+/DotNET/NoteServer/bin/Debug/netcoreapp2.1
+/DotNET/NoteServer/obj
+/DotNET/NoteWinform/obj/Debug
+/DotNET/NoteWinform/bin/Debug
