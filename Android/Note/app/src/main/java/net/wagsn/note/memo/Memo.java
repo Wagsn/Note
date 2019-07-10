@@ -1,4 +1,4 @@
-package net.wagsn.note.entity;
+package net.wagsn.note.memo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,30 +19,30 @@ public class Memo implements Serializable {
      */
     public String content;
 
-    /**
-     * 标签组
-     */
-    public List<Tag> tags;
+//    /**
+//     * 标签组
+//     */
+//    public List<Tag> tags;
+//
+//    /**
+//     * 执行人
+//     */
+//    public List<User> executors;
 
-    /**
-     * 执行人
-     */
-    public List<User> executors;
-
-    /**
-     * 抄送人
-     */
-    public List<User> copiers;
+//    /**
+//     * 抄送人
+//     */
+//    public List<User> copiers;
 
 //    /**
 //     * 备注
 //     */
 //    public String remark;
 
-    /**
-     * 地点
-     */
-    public Site site;
+//    /**
+//     * 地点
+//     */
+//    public Site site;
 
     /**
      * 开始时间

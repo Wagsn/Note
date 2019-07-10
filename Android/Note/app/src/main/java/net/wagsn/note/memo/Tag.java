@@ -1,4 +1,4 @@
-package net.wagsn.note.entity;
+package net.wagsn.note.memo;
 
 /**
  * 标签
