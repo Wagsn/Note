@@ -3,3 +3,9 @@
 ################################################################################
 
 /Android/Note/app/debug
+/Android/Note/app/release/output.json
+/WebAPI/Note/Note/.vs/Note/v16
+/WebAPI/Note/Note/Note/obj
+/WebAPI/Note/Note/NoteForWindows/obj/Debug
+/WebAPI/Note/Note/NoteLib/bin/Debug/netstandard2.0
+/WebAPI/Note/Note/NoteLib/obj
