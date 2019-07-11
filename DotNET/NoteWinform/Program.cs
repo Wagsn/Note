@@ -15,7 +15,9 @@ namespace NoteWindform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Views.MainForm());
+            //Application.Run(new Views.MainForm());
+            //Application.Run(new Views.EditForm());
+            Application.Run(new Views.TableForm());
         }
     }
 }
