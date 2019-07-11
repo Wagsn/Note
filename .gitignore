@@ -7,3 +7,4 @@ release/output.json
 debug
 obj
 bin
+/Android/Note/app/release
