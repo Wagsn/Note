@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{155FD79C-A14D-463B-B38F-4EA0EE328B98}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>NoteForWindows</RootNamespace>
+    <RootNamespace>NoteWindform</RootNamespace>
     <AssemblyName>Note</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -77,21 +77,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditForm.cs">
+    <Compile Include="Common\Result.cs" />
+    <Compile Include="Common\Validate.cs" />
+    <Compile Include="Common\IViewModel.cs" />
+    <Compile Include="Views\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm.Designer.cs">
+    <Compile Include="Views\CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Views\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,6 +118,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="config.json" />
     <None Include="NoteWinform.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +142,12 @@
     <Content Include="res\note.png" />
     <Content Include="res\note_128.ico" />
     <Content Include="res\note_32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoteCore\NoteCore.csproj">
+      <Project>{c76f32c6-63f8-4afe-b549-426718721469}</Project>
+      <Name>NoteCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

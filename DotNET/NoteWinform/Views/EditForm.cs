@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace NoteWindform
+namespace NoteWindform.Views
 {
     public partial class EditForm : Form
     {
