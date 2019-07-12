@@ -43,7 +43,7 @@ namespace NoteServer.Controllers
                 return new
                 {
                     Code = ResponseCode.NotFound,
-                    Message = "找不到Note",
+                    Message = "找不到N对象信息",
                     Data = request
                 };
             }
@@ -87,7 +87,7 @@ namespace NoteServer.Controllers
                     return new
                     {
                         Code = ResponseCode.NotFound,
-                        Message = "找不到Note",
+                        Message = "找不到对象信息",
                         Data = request
                     };
                 }

@@ -23,3 +23,13 @@ Note APP for Android.
 - 通知[可选]
 - 重复[可选]
 - 完成[可选]
+
+## 结构
+
+视图层（View）
+【模型】
+业务层（Manager）
+【实体】
+仓储层（Store）
+
+持久层（SQLite & Net）

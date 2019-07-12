@@ -9,6 +9,9 @@ namespace NoteCore.Net
     /// </summary>
     public class BaseRequest
     {
+        /// <summary>
+        /// 请求头信息
+        /// </summary>
         public class Header
         {
             /// <summary>

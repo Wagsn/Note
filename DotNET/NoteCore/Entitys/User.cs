@@ -26,12 +26,21 @@ namespace NoteCore.Entitys
         /// 密码
         /// </summary>
         public string Password { get; set; }
-
+        /// <summary>
+        /// 新增时间
+        /// </summary>
         public DateTime? CreateTime { get; set; }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
         public DateTime? UpdateTime { get; set; }
-
+        /// <summary>
+        /// 已删除
+        /// </summary>
         public bool Deleted { get; set; } = false;
-
+        /// <summary>
+        /// 删除时间
+        /// </summary>
         public DateTime? DeleteTime { get; set; }
     }
 }
