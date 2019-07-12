@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteCore.Entitys;
+using NoteCore.Net;
 using NoteServer.Stores;
 using System;
 using System.Collections.Generic;
@@ -24,26 +25,26 @@ namespace NoteServer.Controllers
         }
 
         [HttpGet("list")]
-        public object GetNotes()
+        public object GetAll()
         {
             return new
             {
-                Code = "0",
+                Code = ResponseCode.Success,
                 Data = Context.Notes.Where(a => !a.Deleted).ToList()
             };
         }
 
         [HttpGet("delete")]
-        public object DeleteNote([FromQuery]Note note)
+        public object Delete([FromQuery]Note request)
         {
-            var entity = Context.Notes.AsNoTracking().Where(a => (!a.Deleted) && a.Id.Equals(note.Id)).FirstOrDefault();
+            var entity = Context.Notes.AsNoTracking().Where(a => (!a.Deleted) && a.Id.Equals(request.Id)).FirstOrDefault();
             if (entity == null)
             {
                 return new
                 {
-                    Code = "404",
+                    Code = ResponseCode.NotFound,
                     Message = "找不到Note",
-                    Data = note
+                    Data = request
                 };
             }
             entity.Deleted = true;
@@ -53,49 +54,54 @@ namespace NoteServer.Controllers
             Context.SaveChanges();
             return new
             {
-                Code = "0",
-                Data = note
+                Code = ResponseCode.Success,
+                Data = request
             };
         }
 
         [HttpGet("save")]
-        public object NoteSave([FromQuery]Note note)
+        public object Save([FromQuery]Note request)
         {
-            if(note.Id == null)
+            if(request.Id == null)
             {
-                note.Id = Guid.NewGuid().ToString();
+                request.Id = Guid.NewGuid().ToString();
                 var now = DateTime.Now;
-                if (note.CreateTime == null)
+                if (request.CreateTime == null)
                 {
-                    note.CreateTime = now;
+                    request.CreateTime = now;
                 }
-                note.UpdateTime = now;
-                Context.Add(note);
+                request.UpdateTime = now;
+                Context.Add(request);
                 Context.SaveChanges();
+                return new
+                {
+                    Code = ResponseCode.Success,
+                    Data = request
+                };
             }
             else
             {
-                var entity = Context.Notes.AsNoTracking().Where(a => (!a.Deleted) && a.Id.Equals(note.Id)).FirstOrDefault();
+                var entity = Context.Notes.AsNoTracking().Where(a => (!a.Deleted) && a.Id.Equals(request.Id)).FirstOrDefault();
                 if (entity == null)
                 {
                     return new
                     {
-                        Code = "404",
+                        Code = ResponseCode.NotFound,
                         Message = "找不到Note",
-                        Data = note
+                        Data = request
                     };
                 }
-                entity.Title = note.Title;
-                entity.Content = note.Content;
+                entity.Title = request.Title;
+                entity.Content = request.Content;
                 entity.UpdateTime = DateTime.Now;
                 Context.Update(entity);
                 Context.SaveChanges();
+                return new
+                {
+                    Code = ResponseCode.Success,
+                    Data = entity
+                };
             }
-            return new
-            {
-                Code = "0",
-                Data = note
-            };
         }
     }
 }

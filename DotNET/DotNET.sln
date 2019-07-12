@@ -13,6 +13,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NoteWinformSetup", "NoteWin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteWpf", "NoteWpf\NoteWpf.csproj", "{C0A142C0-4D00-4239-97C1-442975DE49BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteWinCore", "NoteWinCore\NoteWinCore.csproj", "{7C28003A-E56A-4424-98D2-B4464F03D47A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{C0A142C0-4D00-4239-97C1-442975DE49BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A142C0-4D00-4239-97C1-442975DE49BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A142C0-4D00-4239-97C1-442975DE49BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C28003A-E56A-4424-98D2-B4464F03D47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C28003A-E56A-4424-98D2-B4464F03D47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C28003A-E56A-4424-98D2-B4464F03D47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C28003A-E56A-4424-98D2-B4464F03D47A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,15 +8,16 @@
         mc:Ignorable="d"
         Title="NoteListWindow" 
         WindowStartupLocation="CenterScreen"
-        Height="450" 
-        Width="800" >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1070" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Column="0" Width="100">
-            <ListView Width="80" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListViewItem Height="90" >
+        Height="800" 
+        Width="1000" >
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*" MinWidth="85"></ColumnDefinition>
+            <ColumnDefinition Width="700*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Cursor="Hand">
+                <ListViewItem Height="90" HorizontalContentAlignment="Stretch">
                     <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                      Height="60"
                                      VerticalAlignment="Center"
@@ -35,15 +36,15 @@
                                         Margin="5 0">
                                 <TextBlock FontSize="15"
                                            Foreground="Black"
-                                           Text="糖宝" />
+                                           Text="第一篇笔记" />
                                 <TextBlock  Margin="0 2 0 0"
                                             FontSize="12"
-                                            Text="Hello world" />
+                                            Text="这是我的第一篇笔记" />
                             </StackPanel>
                         </StackPanel>
                     </materialDesign:Card>
                 </ListViewItem>
-                <ListViewItem Height="90" >
+                <ListViewItem Height="90" HorizontalContentAlignment="Stretch">
                     <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                      Height="60"
                                      VerticalAlignment="Center"
@@ -72,8 +73,16 @@
                 </ListViewItem>
             </ListView>
         </Grid>
-        <Grid Grid.Column="1">
-            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
+        <Grid Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+                <RowDefinition Height="700*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="第一篇笔记" FontSize="35"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                      Width="350"
                                      Height="520"
                                      VerticalAlignment="Center"
@@ -85,10 +94,13 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Image  Stretch="UniformToFill" Source="Resources/Images/note.png" />
-                        <!--<Image  Stretch="UniformToFill" Source="{Binding Head}" />-->
+                        
+                <Image  Stretch="UniformToFill" Source="{Binding Head}" />
+                
                     </Grid>
                     <Grid Grid.Row="1">
-                        <!--<Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Margin="0 -30 5 0"
@@ -97,7 +109,8 @@
                                 <materialDesign:PackIcon Kind="Pencil"
                                                          Height="24"
                                                          Width="24" />
-                            </Button>-->
+                            </Button>
+                
                         <Button  Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
@@ -127,7 +140,7 @@
                                             >
                                 <TextBlock Text="账号  "
                                                Foreground="#B7B7B7" />
-                                <TextBlock Text="vaemc520@qq.com" />
+                                <TextBlock Text="wagsn@foxmail.com" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal"
                                             Margin="80 5 0 0 ">
@@ -163,6 +176,8 @@
                     </Grid>
                 </Grid>
             </materialDesign:Card>
+            </Grid>
+            
         </Grid>
     </Grid>
 </Window>

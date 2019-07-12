@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace NoteCore.Entitys
 {
     /// <summary>
-    /// 用户
+    /// 用户（核心信息）
     /// </summary>
     public class User
     {
@@ -25,5 +26,12 @@ namespace NoteCore.Entitys
         /// 密码
         /// </summary>
         public string Password { get; set; }
+
+        public DateTime? CreateTime { get; set; }
+        public DateTime? UpdateTime { get; set; }
+
+        public bool Deleted { get; set; } = false;
+
+        public DateTime? DeleteTime { get; set; }
     }
 }
