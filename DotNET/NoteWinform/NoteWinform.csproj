@@ -185,9 +185,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Result.cs" />
-    <Compile Include="Common\Validate.cs" />
-    <Compile Include="Common\IViewModel.cs" />
     <Compile Include="Views\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>

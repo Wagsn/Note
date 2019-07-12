@@ -1,4 +1,4 @@
-﻿namespace NoteWindform.Views
+﻿namespace NoteWinCore.Views
 {
     partial class MainForm
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoteWindform.Common
+namespace NoteWinCore.Mvvm
 {
     /// <summary>
     /// 视图模型（用于模型视图交互，包含验证，相当于Presenter）

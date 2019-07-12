@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoteWindform.Common
+namespace NoteWinCore
 {
     /// <summary>
     /// 验证（ViewModel）

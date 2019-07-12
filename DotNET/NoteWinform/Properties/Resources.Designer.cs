@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoteWindform.Properties {
+namespace NoteWinCore.Properties {
     using System;
     
     
