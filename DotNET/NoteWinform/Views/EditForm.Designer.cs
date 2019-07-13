@@ -1,4 +1,4 @@
-﻿namespace NoteWindform.Views
+﻿namespace NoteWinform.Views
 {
     partial class EditForm
     {

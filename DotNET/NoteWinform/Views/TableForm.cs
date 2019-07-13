@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NoteWindform.Views
+namespace NoteWinform.Views
 {
     public partial class TableForm : Form
     {

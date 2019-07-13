@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{155FD79C-A14D-463B-B38F-4EA0EE328B98}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>NoteWindform</RootNamespace>
+    <RootNamespace>NoteWinform</RootNamespace>
     <AssemblyName>Note</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -197,7 +197,6 @@
     <Compile Include="Views\EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\IView.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

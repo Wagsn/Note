@@ -1,4 +1,4 @@
-﻿namespace NoteWinCore.Views
+﻿namespace NoteWinform.Views
 {
     partial class TableForm
     {
