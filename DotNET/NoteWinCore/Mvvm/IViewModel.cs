@@ -11,6 +11,8 @@ namespace NoteWinCore.Mvvm
     /// </summary>
     public interface IViewModel
     {
+        IModel Model { get; set; }
+        IView View { get; set; }
         void OnCleared();
         void Save();
         void Load();

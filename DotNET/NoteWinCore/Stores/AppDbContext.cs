@@ -11,7 +11,6 @@ namespace NoteWinCore.Stores
         public AppDbContext() : base() { }
         public AppDbContext(DbContextOptions options) : base(options) { }
         public DbSet<User> Users { get; set; }
-
         public DbSet<Note> Notes { get; set; }
 
         public DbSet<NoteUserRelation> NoteUserRelations { get; set; }

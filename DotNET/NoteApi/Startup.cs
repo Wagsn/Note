@@ -23,6 +23,8 @@ namespace NoteServer
 
         public IConfiguration Configuration { get; }
 
+        public static readonly string ConnectionString = "server=localhost;database=ws_note;user=admin;password=123456;";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -30,7 +32,7 @@ namespace NoteServer
 
             services.AddDbContext<AppDbContext>(it =>
             {
-                it.UseMySql( "server=localhost;database=ws_note;user=admin;password=123456;");
+                it.UseMySql(ConnectionString);
                 //it.UseMySql("server=192.168.100.132;database=ws_internship;user=admin;password=123456;");
             });
         }

@@ -35,10 +35,10 @@ namespace NoteServer
             // 数据库初始化
             using (var scope = host.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
+                var serviceProvider = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<AppDbContext>();
+                    var context = serviceProvider.GetRequiredService<AppDbContext>();
                     context.Database.EnsureCreated();
                     var wagsn = new User
                     {
@@ -75,7 +75,7 @@ namespace NoteServer
                 }
                 catch (Exception e)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
                     logger.LogError(e, "An error occurred while seeding the database.");
                 }
             }

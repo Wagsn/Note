@@ -24,6 +24,19 @@ namespace NoteServer.Controllers
             Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        public object GetAll(IList<string> ids)
+        {
+            if(ids == null)
+            {
+                return GetAll();
+            }
+            return new
+            {
+                Code = ResponseCode.Success,
+                Data = Context.Set<User>().Where(a => !a.Deleted).Where(a => ids.Contains(a.Id)).ToList()
+            };
+        }
+
         [HttpGet("list")]
         public object GetAll()
         {
