@@ -30,12 +30,5 @@ namespace NoteServer.Stores
                 a.HasKey(k => new { k.NoteId, k.UserId });
             });
         }
-
-        public static string GetPropertyName(Func<User, object> selector)
-        {
-            selector(new User());
-            //selector.Method.GetGenericArguments()[0].GetFields().
-            return "NickName";
-        }
     }
 }

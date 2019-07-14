@@ -11,6 +11,8 @@ namespace NoteWeb
     /// </summary>
     public static class IApplicationBuilderExtension
     {
+        public static readonly string UserKey = "User";
+
         /// <summary>
         /// 解析HTTP请求头部，注入用户信息
         /// </summary>
@@ -22,10 +24,10 @@ namespace NoteWeb
             {
                 return async context =>
                 {
-                    var userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(context.Request.Headers["UserInfo"]);
+                    var userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(context.Request.Headers[UserKey]);
                     if (userInfo != null)
                     {
-                        context.Items.Add("user", userInfo);
+                        context.Items.Add(UserKey, userInfo);
                     }
                     await next(context);
                 };
