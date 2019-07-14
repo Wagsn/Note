@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using NoteCore.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,8 +18,18 @@ namespace NoteWeb
         /// <returns></returns>
         public static IApplicationBuilder UseUserInfo(this IApplicationBuilder builder)
         {
-
-            return null;
+            return builder.Use(next =>
+            {
+                return async context =>
+                {
+                    var userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(context.Request.Headers["UserInfo"]);
+                    if (userInfo != null)
+                    {
+                        context.Items.Add("user", userInfo);
+                    }
+                    await next(context);
+                };
+            });
         }
     }
 }
