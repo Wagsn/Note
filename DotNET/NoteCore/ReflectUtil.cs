@@ -28,6 +28,13 @@ namespace NoteCore
         {
             var name = GetPropertyName<Info>(a => a.Name);
             Console.WriteLine(name);
+
+            var name2 = GetPropertyName<Info>(a => new
+            {
+                NickName = a.Name
+            });
+            Console.WriteLine(name2);
+
         }
     }
 }
