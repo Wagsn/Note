@@ -17,8 +17,16 @@ namespace NoteServer
     {
         public static void Main(string[] args)
         {
+            // 导入配置文件
+            var config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
             var host = WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>().Build();
+                // 使用配置
+                .UseConfiguration(config)
+                .UseStartup<Startup>()
+                .Build();
 
             // 数据库初始化
             DbInit(host);

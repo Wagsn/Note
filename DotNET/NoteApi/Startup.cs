@@ -28,6 +28,9 @@ namespace NoteServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // 配置注入 从Program那边写入，在这里注入服务
+            services.AddSingleton(Configuration as IConfigurationRoot);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<AppDbContext>(it =>
@@ -44,6 +47,17 @@ namespace NoteServer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.Use(next =>
+            {
+                return async context =>
+                {
+                    // 用户信息的获取-从Session或Token
+                    // 用户信息的注入
+                    //context.Request
+                    await next(context);
+                };
+            });
 
             //app.UseMvc();
             app.UseMvc(routes =>
