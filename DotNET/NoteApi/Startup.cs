@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NoteCore.Net;
 using NoteServer.Stores;
 
 namespace NoteServer
@@ -43,21 +46,13 @@ namespace NoteServer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // Crash & Exception Handler
+            app.UseCrashHandler();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.Use(next =>
-            {
-                return async context =>
-                {
-                    // 用户信息的获取-从Session或Token
-                    // 用户信息的注入
-                    //context.Request
-                    await next(context);
-                };
-            });
 
             //app.UseMvc();
             app.UseMvc(routes =>
