@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace NoteCore.Net
+namespace NoteCore.Http
 {
     /// <summary>
     /// 响应码

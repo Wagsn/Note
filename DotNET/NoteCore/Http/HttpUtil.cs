@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace NoteCore.Net
+namespace NoteCore.Http
 {
     /// <summary>
     /// HTTP 工具

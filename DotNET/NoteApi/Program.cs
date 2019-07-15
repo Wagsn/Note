@@ -48,12 +48,18 @@ namespace NoteServer
                 {
                     var context = serviceProvider.GetRequiredService<AppDbContext>();
                     context.Database.EnsureCreated();
+                    if(context.Users.Any() || context.Notes.Any())
+                    {
+                        return;
+                    }
+                    var now = DateTime.Now;
                     var wagsn = new User
                     {
                         Id = Guid.NewGuid().ToString(),
                         NickName = "Wagsn",
                         Email = "wagsn@foxmail.com",
-                        Password = "123456"
+                        Password = "123456",
+                        CreateTime = now
                     };
                     context.Add(wagsn);
                     var admin = new User
@@ -61,10 +67,10 @@ namespace NoteServer
                         Id = Guid.NewGuid().ToString(),
                         NickName = "Admin",
                         Email = "wagsn@foxmail.com",
-                        Password = "123456"
+                        Password = "123456",
+                        CreateTime = now
                     };
                     context.Add(admin);
-                    var now = DateTime.Now;
                     var first = new Note
                     {
                         Id = Guid.NewGuid().ToString(),

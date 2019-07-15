@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteCore.Entitys;
-using NoteCore.Net;
+using NoteCore.Http;
 using NoteServer.Stores;
 using System;
 using System.Collections.Generic;

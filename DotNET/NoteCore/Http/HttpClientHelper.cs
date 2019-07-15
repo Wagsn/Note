@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace NoteCore.Net
+namespace NoteCore.Http
 {
     /// <summary>
     /// Http请求帮助类

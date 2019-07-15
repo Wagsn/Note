@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using NoteCore.Net;
+using NoteCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,21 +23,22 @@ namespace NoteServer
         {
             return builder.Use(async (context, next) =>
             {
-                // 异常处理
                 try
                 {
                     await next();
                 }
                 catch (Exception e)
                 {
-                    ResponseMessage response = new ResponseMessage();
-                    response.Code = ResponseCode.ServerError;
-                    response.Message = e.Message;
+                    ResponseMessage response = new ResponseMessage
+                    {
+                        Code = ResponseCode.ServerError,
+                        Message = e.Message
+                    };
 
                     var resBody = Newtonsoft.Json.JsonConvert.SerializeObject(response);
                     context.Response.StatusCode = 200;
                     context.Response.ContentType = "application/json";
-                    context.Response.ContentLength = Encoding.UTF8.GetByteCount(resBody);
+                    context.Response.ContentLength = Encoding.Default.GetByteCount(resBody);
                     await context.Response.WriteAsync(resBody);
                 }
             });

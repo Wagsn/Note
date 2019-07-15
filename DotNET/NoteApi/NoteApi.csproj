@@ -16,4 +16,8 @@
     <ProjectReference Include="..\NoteServerCore\NoteServerCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\" />
+  </ItemGroup>
+
 </Project>

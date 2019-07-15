@@ -5,9 +5,9 @@ using System.Text;
 namespace NoteCore.Entitys
 {
     /// <summary>
-    /// 网络请求日志
+    /// 请求日志
     /// </summary>
-    public class NetRequestLog
+    public class RequestLog
     {
         /// <summary>
         /// 标识

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace NoteCore.Entitys
@@ -12,10 +13,13 @@ namespace NoteCore.Entitys
         /// <summary>
         /// 主键
         /// </summary>
+        [Key]
+        [MaxLength(36)]
         public string Id { get; set; }
         /// <summary>
         /// 标题
         /// </summary>
+        [MaxLength(127)]
         public string Title { get; set; }
         /// <summary>
         /// 正文

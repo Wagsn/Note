@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace NoteCore.Net
+namespace NoteCore.Http
 {
     /// <summary>
     /// HTTP请求客户端
@@ -24,7 +24,6 @@ namespace NoteCore.Net
         /// <returns></returns>
         public static Res Get<Res, Req>(string url, Req req)
         {
-
             var query = "?" + HttpUtil.ToQueryString(req);
 
             var uri = new Uri(url+query);
@@ -42,8 +41,9 @@ namespace NoteCore.Net
                 var watch = new System.Diagnostics.Stopwatch();
                 watch.Start();
 
+                //var requestStream = webRequest.GetRequestStream();
                 //var jsonByte = Encoding.UTF8.GetBytes("body string");
-                //stream.Write(jsonByte, 0, jsonByte.Length);
+                //requestStream.Write(jsonByte, 0, jsonByte.Length);
 
                 var webResponse = webRequest.GetResponse();
                 using (var streamReader = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8))

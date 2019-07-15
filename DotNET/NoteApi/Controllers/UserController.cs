@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteCore.Entitys;
-using NoteCore.Net;
+using NoteCore.Http;
 using NoteServer.Stores;
 using System;
 using System.Collections.Generic;
@@ -24,26 +24,22 @@ namespace NoteServer.Controllers
             Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public object GetAll(IList<string> ids)
+        // http://localhost:5000/api/user/list?[0]=0cab50ab-f571-4945-b3f5-88a3873f0139
+        [HttpGet("list")]
+        public object GetAll([FromQuery]IList<string> ids)
         {
             if(ids == null)
             {
-                return GetAll();
+                return new
+                {
+                    Code = ResponseCode.Success,
+                    Data = Context.Users.Where(a => !a.Deleted).ToList()
+                };
             }
             return new
             {
                 Code = ResponseCode.Success,
                 Data = Context.Set<User>().Where(a => !a.Deleted).Where(a => ids.Contains(a.Id)).ToList()
-            };
-        }
-
-        [HttpGet("list")]
-        public object GetAll()
-        {
-            return new
-            {
-                Code = ResponseCode.Success,
-                Data = Context.Users.Where(a => !a.Deleted).ToList()
             };
         }
 

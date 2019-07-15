@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoteCore.Net
+namespace NoteCore.Http
 {
     public abstract class BaseResponse
     {

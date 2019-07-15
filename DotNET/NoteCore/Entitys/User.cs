@@ -10,21 +10,25 @@ namespace NoteCore.Entitys
     /// </summary>
     public class User
     {
+        [Key]
         public string Id { get; set; }
 
         /// <summary>
         /// 电子邮箱（唯一）
         /// </summary>
+        [MaxLength(1023)]
         public string Email { get; set; }
 
         /// <summary>
         /// 昵称（随便改）
         /// </summary>
+        [MaxLength(63)]
         public string NickName { get; set; }
 
         /// <summary>
         /// 密码
         /// </summary>
+        [MaxLength(511)]
         public string Password { get; set; }
         /// <summary>
         /// 新增时间

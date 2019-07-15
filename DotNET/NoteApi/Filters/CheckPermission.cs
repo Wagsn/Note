@@ -16,6 +16,7 @@ namespace NoteServer.Filters
         {
             Context = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             this.PermissionItem = permissionItem;
+            Console.WriteLine(permissionItem);
         }
         //public CheckPermission(Microsoft.AspNetCore.Identity.UserManager<Users> extendUserManager, PermissionExpansionManager permissionExpansionManager, string permissionitem = "")
         //{
