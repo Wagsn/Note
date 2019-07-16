@@ -78,7 +78,7 @@ public class NoteFragment extends Fragment {
 
         // TODO replace to NoteStore, move to Presenter. presenter.resume();
 //        NoteContent.ITEMS.clear();
-//        NoteContent.ITEMS.addAll(NoteStore.get().loadAll());  // Store.get().loadAll<NoteItem>();
+//        NoteContent.ITEMS.addAll(NoteStore.get().loadAll());  // Store.get().loadAll<Note>();
         adapter.notifyDataSetChanged();
     }
 

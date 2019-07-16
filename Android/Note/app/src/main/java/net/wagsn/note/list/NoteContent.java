@@ -1,6 +1,6 @@
 package net.wagsn.note.list;
 
-import net.wagsn.note.entity.NoteItem;
+import net.wagsn.note.entity.Note;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,12 +16,12 @@ public class NoteContent {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<NoteItem> ITEMS = new ArrayList<>();
+    public static final List<Note> ITEMS = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, NoteItem> ITEM_MAP = new HashMap<>();
+    public static final Map<String, Note> ITEM_MAP = new HashMap<>();
 
     private static final int COUNT = 25;
 
@@ -41,7 +41,7 @@ public class NoteContent {
         ITEM_MAP.clear();
     }
 
-    public static void addItem(NoteItem item) {
+    public static void addItem(Note item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }

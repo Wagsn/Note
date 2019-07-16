@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import net.wagsn.note.R;
-import net.wagsn.note.entity.NoteItem;
+import net.wagsn.note.entity.Note;
 import net.wagsn.note.list.NoteListStore;
 import net.wagsn.util.PerformEdit;
 
@@ -44,7 +44,7 @@ public class NoteEditFragment extends Fragment {
         mPerformEdit = new PerformEdit(holder.contentView);
 
         if(savedInstanceState != null){
-            holder.item = (NoteItem) savedInstanceState.get(NOTE_ITEM);
+            holder.item = (Note) savedInstanceState.get(NOTE_ITEM);
         }
 
         EventBus.getDefault().register(this);
@@ -96,20 +96,20 @@ public class NoteEditFragment extends Fragment {
         EditText titleView;
         EditText contentView;
 
-        NoteItem item = new NoteItem();
+        Note item = new Note();
 
         public ViewHolder(View view){
             titleView = view.findViewById(R.id.note_title);
             contentView =view.findViewById(R.id.note_content);
         }
 
-        public NoteItem getItem(){
+        public Note getItem(){
             item.title = titleView.getText().toString();
             item.content = contentView.getText().toString();
             return item;
         }
 
-        public void setItem(NoteItem item) {
+        public void setItem(Note item) {
             this.item = item;
             titleView.setText(item.title);
             contentView.setText(item.content);
@@ -118,7 +118,7 @@ public class NoteEditFragment extends Fragment {
 
     @Subscribe
     public void save(NoteEditActivity.NoteSaveEvent event){
-        NoteItem item = holder.getItem();
+        Note item = holder.getItem();
         NoteListStore.get().add(item);
         Log.d(TAG, "save: "+item);
         if (getActivity()!=null){

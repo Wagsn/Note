@@ -1,8 +1,8 @@
 package net.wagsn.note.list;
 
-import net.wagsn.note.entity.NoteItem;
+import net.wagsn.note.entity.Note;
 import net.wagsn.note.storage.db.DBManager;
-import net.wagsn.note.storage.db.NoteItemDao;
+import net.wagsn.note.storage.db.NoteDao;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,9 +12,9 @@ import java.util.UUID;
 /**
  * Store for Note List, for Adapter.
  */
-public class NoteListStore extends ArrayList<NoteItem> {
+public class NoteListStore extends ArrayList<Note> {
 
-     NoteItemDao dao = DBManager.get().getNoteItemDao();
+     NoteDao dao = DBManager.get().getNoteDao();
     // 排序规则
     public int sortType;
 
@@ -33,7 +33,7 @@ public class NoteListStore extends ArrayList<NoteItem> {
     }
 
     @Override
-    public boolean add(NoteItem item) {
+    public boolean add(Note item) {
         if (item.time == null){
             item.time = new Date();
         }
@@ -53,11 +53,11 @@ public class NoteListStore extends ArrayList<NoteItem> {
         return false;
     }
 
-    public class Order implements Comparator<NoteItem> {
+    public class Order implements Comparator<Note> {
 
         @Override
-        public int compare(NoteItem noteItem, NoteItem t1) {
-            return noteItem.time.after(t1.time)?1:0;
+        public int compare(Note note, Note t1) {
+            return note.time.after(t1.time)?1:0;
         }
     }
 }

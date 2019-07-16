@@ -11,24 +11,24 @@ import android.widget.TextView;
 
 import net.wagsn.note.R;
 import net.wagsn.note.edit.NoteEditActivity;
-import net.wagsn.note.entity.NoteItem;
+import net.wagsn.note.entity.Note;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link NoteItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Note} and makes a call to the
  * specified {@link NoteRecyclerViewAdapter.ViewHolder.OnClickListener}.
  * Presenter for Note List.
  */
 public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder> {
 
     // Model
-    private final List<NoteItem> mValues;
+    private final List<Note> mValues;
 //    private final NoteStore store = NoteStore.get();
 
-    NoteRecyclerViewAdapter(List<NoteItem> items) {
+    NoteRecyclerViewAdapter(List<Note> items) {
         mValues = items;
     }
 
@@ -63,7 +63,7 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
         final String timePattern = "yyyy/MM/dd HH:mm:ss";
         @SuppressLint("SimpleDateFormat")
         final SimpleDateFormat dateFormat = new SimpleDateFormat(timePattern);
-        NoteItem mItem;
+        Note mItem;
 
         ViewHolder(View view) {
             super(view);
@@ -76,7 +76,7 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
             mView.setOnLongClickListener(this);
         }
 
-        public void setData(NoteItem item){
+        public void setData(Note item){
             mItem = item;
             mIdView.setText(mItem.id);
             mTitleView.setText(mItem.title);

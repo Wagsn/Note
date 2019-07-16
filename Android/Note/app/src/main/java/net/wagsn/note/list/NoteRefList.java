@@ -2,16 +2,16 @@ package net.wagsn.note.list;
 
 import android.support.annotation.NonNull;
 
-import net.wagsn.note.entity.NoteItem;
+import net.wagsn.note.entity.Note;
 import net.wagsn.note.storage.db.DBManager;
-import net.wagsn.note.storage.db.NoteItemDao;
+import net.wagsn.note.storage.db.NoteDao;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NoteRefList extends ArrayList<NoteRefList.Ref> {
 
-    static NoteItemDao dao = DBManager.get().getNoteItemDao();
+    static NoteDao dao = DBManager.get().getNoteDao();
 
     NoteRefList() {
         super(Arrays.asList((Ref[]) dao.loadAll().stream().map(Ref::new).toArray()));
@@ -33,18 +33,18 @@ public class NoteRefList extends ArrayList<NoteRefList.Ref> {
     }
 
     public static class Ref {
-        private NoteItem value;
+        private Note value;
 
-        public Ref(@NonNull NoteItem item){
+        public Ref(@NonNull Note item){
             value = item;
         }
 
-        public void set(@NonNull NoteItem item){
+        public void set(@NonNull Note item){
             value = item;
             dao.save(item);
         }
 
-        public NoteItem get(){
+        public Note get(){
             return value;
         }
     }

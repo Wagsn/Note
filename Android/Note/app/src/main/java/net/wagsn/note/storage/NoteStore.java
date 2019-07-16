@@ -1,6 +1,6 @@
 package net.wagsn.note.storage;
 
-import net.wagsn.note.entity.NoteItem;
+import net.wagsn.note.entity.Note;
 import net.wagsn.util.storage.AbstractStore;
 
 import org.greenrobot.greendao.AbstractDao;
@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * The data resource
+ * Note 统一数据源
  */
-public class NoteStore extends AbstractStore<NoteItem, String> {
+public class NoteStore extends AbstractStore<Note, String> {
 
-    public final List<NoteItem> ITEMS = new ArrayList<>();
-    private AbstractDao<NoteItem, String> mDao;
+    public final List<Note> ITEMS = new ArrayList<>();
+    private AbstractDao<Note, String> mDao;
 
     private NoteStore(){}
 
@@ -28,28 +28,24 @@ public class NoteStore extends AbstractStore<NoteItem, String> {
         return SingletonHolder.instance;
     }
 
-    public void init(AbstractDao<NoteItem, String> abstractDao){
+    public void init(AbstractDao<Note, String> abstractDao){
         mDao = abstractDao;
         ITEMS.addAll(mDao.loadAll());
     }
 
     @Override
-    public String getKey(NoteItem item) {
-        if (item != null){
-            return item.getId();
-        }else {
-            return null;
-        }
+    public String getKey(Note item) {
+        return item != null ? item.getId() : null;
     }
 
     @Override
-    public boolean hasKey(NoteItem item) {
+    public boolean hasKey(Note item) {
         return item.getId() != null;
     }
 
     @Override
-    public void save(Iterable<NoteItem> noteItems) {
-        for (NoteItem item: noteItems) {
+    public void save(Iterable<Note> noteItems) {
+        for (Note item: noteItems) {
             item.time = new Date();
             item.updateTime = new Date();
             if (!hasKey(item)){
@@ -62,12 +58,12 @@ public class NoteStore extends AbstractStore<NoteItem, String> {
     }
 
     @Override
-    public List<NoteItem> loadAll() {
+    public List<Note> loadAll() {
         return mDao.loadAll();
     }
 
     @Override
-    public void delete(Iterable<NoteItem> iterable) {
+    public void delete(Iterable<Note> iterable) {
         mDao.deleteInTx(iterable);
     }
 }

@@ -1,11 +1,13 @@
 package net.wagsn.util.storage;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 抽象存储
+ * @param <TEntity> 存储实体
+ * @param <TKey> 实体主键
+ */
 public abstract class AbstractStore<TEntity, TKey> implements IStore<TEntity, TKey> {
 
     @Override
@@ -43,7 +45,6 @@ public abstract class AbstractStore<TEntity, TKey> implements IStore<TEntity, TK
 //        delete(loadWhere(predicate));
 //    }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void deleteByKey(TKey key) {
         TEntity entity = load(key);

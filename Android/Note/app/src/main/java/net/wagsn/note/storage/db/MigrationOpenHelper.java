@@ -23,7 +23,7 @@ public class MigrationOpenHelper extends DaoMaster.OpenHelper{
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         // 操作数据库的更新
-        MigrationHelper.get().migrate(db, NoteItemDao.class);
+        MigrationHelper.get().migrate(db, NoteDao.class);
         Log.i("greenDao:", "数据库从("+oldVersion+")更新到("+newVersion+")");
     }
 }

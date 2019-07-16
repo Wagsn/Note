@@ -12,7 +12,7 @@ public class DBManager {
 
     private static final String DB_NAME = "database";
 
-    private NoteItemDao noteItemDao;
+    private NoteDao noteDao;
 
     private DBManager(){
     }
@@ -30,10 +30,10 @@ public class DBManager {
 //        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, DB_NAME);
         Database db = helper.getWritableDb();
         DaoSession daoSession = new DaoMaster(db).newSession();
-        noteItemDao = daoSession.getNoteItemDao();
+        noteDao = daoSession.getNoteDao();
     }
 
-    public NoteItemDao getNoteItemDao(){
-        return noteItemDao;
+    public NoteDao getNoteDao(){
+        return noteDao;
     }
 }
