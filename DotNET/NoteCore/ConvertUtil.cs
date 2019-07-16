@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-
-namespace NoteCore
+﻿namespace NoteCore
 {
-    public class ConvertHelper
+    /// <summary>
+    /// 格式转换工具
+    /// </summary>
+    public class ConvertUtil
     {
         public class UnixTimestamp
         {
@@ -119,19 +117,6 @@ namespace NoteCore
                 }
             }
             return text2;
-        }
-    }
-
-    public class StringHandle
-    {
-        /// <summary>
-        /// 去掉字符串的空格/换行符等非法字符
-        /// </summary>
-        public static string FilterChat(string str)
-        {
-            str = str.Trim();
-            str = Regex.Replace(str, "\\|\t|\r|\n", string.Empty);
-            return str;
         }
     }
 }

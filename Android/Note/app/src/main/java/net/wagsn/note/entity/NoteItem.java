@@ -27,9 +27,7 @@ public class NoteItem implements Serializable {
     @Property
     public Date updateTime;
     @Property
-    public boolean isDelete;
-    @Property
-    public Date deleteTime;
+    public boolean local;
 
     public NoteItem(String id, String title, String content, Date time) {
         this.id = id;
@@ -39,8 +37,6 @@ public class NoteItem implements Serializable {
         Date now = new Date();
         this.createTime = now;
         this.updateTime = now;
-        this.isDelete = false;
-        this.deleteTime = null;
     }
 
     @Generated(hash = 1249367908)
@@ -52,8 +48,6 @@ public class NoteItem implements Serializable {
         this.time = time;
         this.createTime = createTime;
         this.updateTime = updateTime;
-        this.isDelete = isDelete;
-        this.deleteTime = deleteTime;
     }
 
     @Generated(hash = 260707407)
@@ -111,21 +105,5 @@ public class NoteItem implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public boolean getIsDelete() {
-        return this.isDelete;
-    }
-
-    public void setIsDelete(boolean isDelete) {
-        this.isDelete = isDelete;
-    }
-
-    public Date getDeleteTime() {
-        return this.deleteTime;
-    }
-
-    public void setDeleteTime(Date deleteTime) {
-        this.deleteTime = deleteTime;
     }
 }

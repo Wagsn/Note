@@ -24,7 +24,7 @@ namespace NoteCore.Http
                 OsName = "Window WT",
                 OsVersion = "",
                 Source = 3,
-                Timestamp = ConvertHelper.UnixTimestamp.FromDateTime(DateTime.Now),
+                Timestamp = ConvertUtil.UnixTimestamp.FromDateTime(DateTime.Now),
                 VersionCode = "1.0.0",
                 VersionName = "1.0.0"
             };
