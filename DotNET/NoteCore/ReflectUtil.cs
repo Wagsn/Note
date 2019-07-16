@@ -17,6 +17,16 @@ namespace NoteCore
     /// </summary>
     public class ReflectUtil
     {
+        /// <summary>
+        /// 获取选择的字段名称<br/>
+        /// 使用格式：<br/>
+        /// <code> 
+        /// var name = GetPropertyName<![CDATA[<]]>Info>(a => a.Name); 
+        /// </code>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="selector"></param>
+        /// <returns></returns>
         public static string GetPropertyName<T>(Expression<Func<T, object>> selector)
         {
             return selector.Body.ToString().Split('.')[1];
@@ -34,7 +44,6 @@ namespace NoteCore
                 NickName = a.Name
             });
             Console.WriteLine(name2);
-
         }
     }
 }

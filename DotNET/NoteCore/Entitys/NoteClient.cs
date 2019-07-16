@@ -8,7 +8,7 @@ namespace NoteCore.Entitys
     /// <summary>
     /// 本地笔记
     /// </summary>
-    public class NoteLocal
+    public class NoteClient
     {
         /// <summary>
         /// 主键

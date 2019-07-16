@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace NoteCore.Http
     public class RestClient
     {
         //ILogger Logger = LoggerManager.GetLogger("ApiClient");
+        //ILogger Logger = new Logger<RestClient>(Lo);
 
         private static System.Net.Http.HttpClient _httpClient = null;
 
