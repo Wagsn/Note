@@ -33,6 +33,8 @@ namespace NoteCore.Entitys
         /// 更新时间
         /// </summary>
         public DateTime? UpdateTime { get; set; }
+
+        // 服务器软删除所需字段
         /// <summary>
         /// 已删除
         /// </summary>

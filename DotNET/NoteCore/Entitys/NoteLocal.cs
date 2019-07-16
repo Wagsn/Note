@@ -34,6 +34,7 @@ namespace NoteCore.Entitys
         /// </summary>
         public DateTime? UpdateTime { get; set; }
 
+        // 客户端标记所需字段
         /// <summary>
         /// 是否同步到服务器
         /// </summary>

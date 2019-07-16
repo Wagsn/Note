@@ -118,5 +118,15 @@
     <Resource Include="Resources\Images\note_128.ico" />
     <Resource Include="Resources\Images\note_32.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoteCore\NoteCore.csproj">
+      <Project>{c76f32c6-63f8-4afe-b549-426718721469}</Project>
+      <Name>NoteCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoteWinCore\NoteWinCore.csproj">
+      <Project>{7c28003a-e56a-4424-98d2-b4464f03d47a}</Project>
+      <Name>NoteWinCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
