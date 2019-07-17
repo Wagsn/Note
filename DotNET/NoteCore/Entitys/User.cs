@@ -20,7 +20,9 @@ namespace NoteCore.Entitys
         public string Email { get; set; }
 
         /// <summary>
-        /// 昵称（随便改）
+        /// 昵称
+        /// - 用于描述自己
+        /// - 可以任意更改
         /// </summary>
         [MaxLength(63)]
         public string NickName { get; set; }

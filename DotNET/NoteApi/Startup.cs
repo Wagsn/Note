@@ -33,6 +33,8 @@ namespace NoteServer
         {
             // 配置注入 从Program那边写入，在这里注入服务
             services.AddSingleton(Configuration as IConfigurationRoot);
+            // 注入日志服务
+            services.AddLogging();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

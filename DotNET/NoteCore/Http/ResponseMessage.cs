@@ -9,24 +9,24 @@ namespace NoteCore.Http
 
     }
 
-    public class TokenResponseMessage : ResponseMessage
+    public class TokenResponseMessage : ResponseBody
     {
         public string access_token { get; set; }
     }
 
-    public class ResponseMessage : BaseResponse
+    public class ResponseBody : BaseResponse
     {
-        public string Code { get; set; }
+        public ResponseCode Code { get; set; }
         public string Message { get; set; }
 
-        public ResponseMessage()
+        public ResponseBody()
         {
-            Code = "0";
+            Code = 0;
         }
 
         public bool IsSuccess()
         {
-            if (Code == "0")
+            if (Code == 0)
             {
                 return true;
             }
@@ -34,12 +34,12 @@ namespace NoteCore.Http
         }
     }
 
-    public class ResponseMessage<TEx> : ResponseMessage
+    public class ResponseBody<TEntity> : ResponseBody
     {
-        public TEx Extension { get; set; }
+        public TEntity Data { get; set; }
     }
 
-    public class PagingResponseMessage<Tentity> : ResponseMessage<List<Tentity>>
+    public class PagingResponseMessage<TEntity> : ResponseBody<List<TEntity>>
     {
         public int PageIndex { get; set; }
 

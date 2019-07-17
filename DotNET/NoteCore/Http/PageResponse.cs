@@ -7,7 +7,7 @@ namespace NoteCore.Http
     /// <summary>
     /// 分页响应体
     /// </summary>
-    public class PageResponse
+    public class PageResponse<T> : ResponseBody<IList<T>>
     {
         /// <summary>
         /// 分页索引 PageIndex

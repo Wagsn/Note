@@ -29,9 +29,9 @@ namespace NoteServer
                 }
                 catch (Exception e)
                 {
-                    ResponseMessage response = new ResponseMessage
+                    ResponseBody response = new ResponseBody
                     {
-                        Code = ResponseCode.ServerError,
+                        Code = ResponseCode.ServiceError,
                         Message = e.Message
                     };
 

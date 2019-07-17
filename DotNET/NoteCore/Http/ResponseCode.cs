@@ -8,22 +8,7 @@ namespace NoteCore.Http
     /// <summary>
     /// 响应码
     /// </summary>
-    public class ResponseCode
-    {
-        /// <summary>
-        /// 请求成功
-        /// </summary>
-        public static readonly string Success = ((int)ResponseCodeEnum.Success).ToString();
-        /// <summary>
-        /// 找不到
-        /// </summary>
-        public static readonly string NotFound = ((int)ResponseCodeEnum.NotFound).ToString();
-        /// <summary>
-        /// 服务器错误
-        /// </summary>
-        public static readonly string ServerError = ((int)ResponseCodeEnum.ServiceError).ToString();
-    }
-    public enum ResponseCodeEnum
+    public enum ResponseCode
     {
         /// <summary>
         /// 请求成功
@@ -41,7 +26,8 @@ namespace NoteCore.Http
         [Description("参数不能为空")]
         ArgumentNullError = 101,
         /// <summary>
-        /// 对象已存在
+        /// 对象已存在<br/>
+        /// - 可能的原因是实体的全局唯一属性在数据库中已经存在
         /// </summary>
         [Description("对象已存在")]
         ObjectAlreadyExists = 102,

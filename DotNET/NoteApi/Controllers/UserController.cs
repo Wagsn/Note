@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NoteCore;
 using NoteCore.Entitys;
 using NoteCore.Http;
 using NoteServer.Stores;
@@ -18,17 +20,30 @@ namespace NoteServer.Controllers
     public class UserController : ControllerBase
     {
         private AppDbContext Context { get; }
+        //private ILogger Logger { get; }
 
         public UserController(AppDbContext context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
+            //Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        // http://localhost:5000/api/user/list?[0]=0cab50ab-f571-4945-b3f5-88a3873f0139
-        [HttpGet("list")]
+        /// <summary>
+        /// 字段排序和筛选，分页请求
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("list")]
+        public object GetAll([FromBody]PageRequest request)
+        {
+            return Context.Set<User>().Where(a => !a.Deleted).OrderByDescending(a => a.CreateTime).List(request).Page(request);
+        }
+
+        // http://localhost:5000/api/user/list/ids?[0]=0cab50ab-f571-4945-b3f5-88a3873f0139
+        [HttpGet("list/ids")]
         public object GetAll([FromQuery]IList<string> ids)
         {
-            if(ids == null)
+            if(ids == null || ids.Count == 0)
             {
                 return new
                 {

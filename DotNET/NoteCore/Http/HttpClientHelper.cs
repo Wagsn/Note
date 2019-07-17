@@ -78,7 +78,7 @@ namespace NoteCore.Http
             {
                 body = Newtonsoft.Json.JsonConvert.SerializeObject(postEntity);
             }
-            Execute<ResponseMessage>(cmd, HttpMethod.POST, args, body);
+            Execute<ResponseBody>(cmd, HttpMethod.POST, args, body);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace NoteCore.Http
             catch (Exception ex)
             {
                 webRequest.Abort();
-                return new ResponseMessage { Code = "500", Message = ex.Message } as T;
+                return new ResponseBody { Code = ResponseCode.ServiceError, Message = ex.Message } as T;
             }
         }
 
