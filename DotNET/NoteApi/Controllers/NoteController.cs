@@ -14,7 +14,7 @@ namespace NoteServer.Controllers
     /// 笔记控制器
     /// </summary>
     [Route("api/[controller]")]
-    [ApiController]
+    ////[ApiController]
     public class NoteController: ControllerBase
     {
         private AppDbContext Context { get; }

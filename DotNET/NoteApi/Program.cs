@@ -23,9 +23,10 @@ namespace NoteServer
             .Build();
 
             var host = WebHost.CreateDefaultBuilder(args)
-                // 使用配置
+                // 使用配置，可以在Startup的构造函数中接收到
                 .UseConfiguration(config)
                 .UseStartup<Startup>()
+                .UseUrls($"http://*:{config["Port"]}")
                 .Build();
 
             // 数据库初始化
@@ -38,7 +39,7 @@ namespace NoteServer
         /// 数据库初始化
         /// </summary>
         /// <param name="host"></param>
-        public static void DbInit(IWebHost host)
+        public static void DbInit(IWebHost host, IConfigurationRoot config = null)
         {
             // 数据库初始化
             using (var scope = host.Services.CreateScope())

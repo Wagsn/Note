@@ -7,15 +7,36 @@ using System.Reflection;
 
 namespace NoteServer.Stores
 {
+    /// <summary>
+    /// 应用数据库上下文
+    /// </summary>
     public class AppDbContext : DbContext
     {
+        /// <summary>
+        /// 无参构造器
+        /// </summary>
         public AppDbContext():base(){}
+        /// <summary>
+        /// 构造器
+        /// </summary>
+        /// <param name="options"></param>
         public AppDbContext(DbContextOptions options):base(options){}
-
+        /// <summary>
+        /// 用户
+        /// </summary>
         public DbSet<User> Users { get; set; }
+        /// <summary>
+        /// 笔记
+        /// </summary>
         public DbSet<Note> Notes { get; set; }
+        /// <summary>
+        /// 笔记用户关联
+        /// </summary>
         public DbSet<NoteUserRelation> NoteUserRelations { get; set; }
-
+        /// <summary>
+        /// 模型创建时
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -33,9 +54,8 @@ namespace NoteServer.Stores
                 a.HasKey(k => new { k.NoteId, k.UserId });
             });
         }
-
         /// <summary>
-        /// 通用的分页查询工具方法
+        /// 过滤与筛选
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="request"></param>
@@ -69,7 +89,12 @@ namespace NoteServer.Stores
             }
             return query;
         }
-
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public PageResponse<T> Page<T>(PageRequest request) where T : class
         {
             var query = List<T>(request);

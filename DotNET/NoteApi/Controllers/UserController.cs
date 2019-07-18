@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NoteCore;
 using NoteCore.Entitys;
@@ -16,15 +17,17 @@ namespace NoteServer.Controllers
     /// 用户
     /// </summary>
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]  // 会自动拦截模型验证错误，返回400错误
     public class UserController : ControllerBase
     {
         private AppDbContext Context { get; }
+        private IConfigurationRoot Config { get; }
         //private ILogger Logger { get; }
 
-        public UserController(AppDbContext context)
+        public UserController(AppDbContext context, IConfigurationRoot config)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
+            Config = config ?? throw new ArgumentNullException(nameof(config));
             //Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -33,8 +36,8 @@ namespace NoteServer.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("list")]
-        public object GetAll([FromBody]PageRequest request)
+        [HttpGet("list")]
+        public object GetAll([FromQuery]PageRequest request)
         {
             return Context.Set<User>().Where(a => !a.Deleted).OrderByDescending(a => a.CreateTime).List(request).Page(request);
         }
@@ -48,7 +51,7 @@ namespace NoteServer.Controllers
                 return new
                 {
                     Code = ResponseCode.Success,
-                    Data = Context.Users.Where(a => !a.Deleted).ToList()
+                    Data = Context.Set<User>().Where(a => !a.Deleted).ToList()
                 };
             }
             return new

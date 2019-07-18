@@ -11,14 +11,15 @@ namespace NoteCore.Entitys
     public class User
     {
         [Key]
+        [MaxLength(36)]
         public string Id { get; set; }
-
         /// <summary>
         /// 电子邮箱（唯一）
         /// </summary>
-        [MaxLength(1023)]
+        //[MaxLength(1023)]
+        [MaxLength(3)]
+        [Required(ErrorMessage ="不能为空")]
         public string Email { get; set; }
-
         /// <summary>
         /// 昵称
         /// - 用于描述自己
@@ -26,12 +27,16 @@ namespace NoteCore.Entitys
         /// </summary>
         [MaxLength(63)]
         public string NickName { get; set; }
-
         /// <summary>
         /// 密码
         /// </summary>
         [MaxLength(511)]
         public string Password { get; set; }
+        /// <summary>
+        /// 头像地址
+        /// </summary>
+        [MaxLength(1023)]
+        public string AvatarUrl { get; set; }
         /// <summary>
         /// 新增时间
         /// </summary>
