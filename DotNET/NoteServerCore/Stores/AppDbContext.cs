@@ -54,6 +54,16 @@ namespace NoteServer.Stores
                 a.HasKey(k => new { k.NoteId, k.UserId });
             });
         }
+        ///// <summary>
+        ///// 配置
+        ///// </summary>
+        ///// <param name="optionsBuilder"></param>
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    base.OnConfiguring(optionsBuilder);
+        //    optionsBuilder.UseMySql("server=localhost;database=ws_note;user=admin;password=123456;");
+        //}
+
         /// <summary>
         /// 过滤与筛选
         /// </summary>
