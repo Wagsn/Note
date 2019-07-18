@@ -16,8 +16,7 @@ namespace NoteCore.Entitys
         /// <summary>
         /// 电子邮箱（唯一）
         /// </summary>
-        //[MaxLength(1023)]
-        [MaxLength(3)]
+        [MaxLength(1023)]
         [Required(ErrorMessage ="不能为空")]
         public string Email { get; set; }
         /// <summary>

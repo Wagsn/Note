@@ -26,6 +26,10 @@ namespace NoteServer.Stores
         /// </summary>
         public DbSet<User> Users { get; set; }
         /// <summary>
+        /// 用户扩展
+        /// </summary>
+        public DbSet<UserExt> UserExts { get; set; }
+        /// <summary>
         /// 笔记
         /// </summary>
         public DbSet<Note> Notes { get; set; }
@@ -45,6 +49,10 @@ namespace NoteServer.Stores
             {
                 a.HasKey(k => k.Id);
             });
+            modelBuilder.Entity<UserExt>(a =>
+            {
+                a.HasKey(k => k.Id);
+            });
             modelBuilder.Entity<Note>(a =>
             {
                 a.HasKey(k => k.Id);
@@ -55,7 +63,7 @@ namespace NoteServer.Stores
             });
         }
         ///// <summary>
-        ///// 配置
+        ///// 配置 - 用户数据库迁移 - 用于基架生成
         ///// </summary>
         ///// <param name="optionsBuilder"></param>
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
