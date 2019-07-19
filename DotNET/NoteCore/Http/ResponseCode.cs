@@ -27,12 +27,13 @@ namespace NoteCore.Http
         ArgumentNullError = 101,
         /// <summary>
         /// 对象已存在<br/>
-        /// - 可能的原因是实体的全局唯一属性在数据库中已经存在
+        /// - 新增的对象已存在与数据库
         /// </summary>
         [Description("对象已存在")]
         ObjectAlreadyExists = 102,
         /// <summary>
-        /// 局部已失效
+        /// 局部已失效<br/>
+        /// - 复数参数中部分无效
         /// </summary>
         [Description("局部已失效")]
         PartialFailure = 103,
