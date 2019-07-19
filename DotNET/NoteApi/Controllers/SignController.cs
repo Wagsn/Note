@@ -15,7 +15,7 @@ namespace NoteServer.Controllers
     /// Created by Wagsn on 2019/07/16.
     /// </summary>
     [Route("api/[controller]")]
-    //[ApiController]
+    //[ApiController]  // 会将模型验证失败转换成400错误返回
     public class SignController : ControllerBase
     {
         public AppDbContext Context { get; }
@@ -39,7 +39,7 @@ namespace NoteServer.Controllers
                 response.Message = "该账户已经存在";
             }
             var now = DateTime.Now;
-            var user = new User
+            var entity = new User
             {
                 Email = request.Email,
                 NickName = request.NickName,
@@ -48,7 +48,7 @@ namespace NoteServer.Controllers
                 UpdateTime = now,
                 Id = Guid.NewGuid().ToString()
             };
-            Context.Add(user);
+            Context.Add(entity);
             await Context.SaveChangesAsync();
             return new ResponseBody();
         }
@@ -66,16 +66,16 @@ namespace NoteServer.Controllers
                 response.Message = "用户标识不能为空";
                 return response;
             }
-            var user = await Context.Set<User>().AsNoTracking().Where(a => !a.Deleted).Where(a => a.Id.Equals(request.Id)).SingleOrDefaultAsync();
-            if(user == null)
+            var entity = await Context.Set<User>().AsNoTracking().Where(a => !a.Deleted).Where(a => a.Id.Equals(request.Id)).SingleOrDefaultAsync();
+            if(entity == null)
             {
                 response.Code = ResponseCode.NotFound;
                 response.Message = "该用户不存在";
                 return response;
             }
-            user.Deleted = true;
-            user.DeleteTime = DateTime.Now;
-            Context.Update(user);
+            entity.Deleted = true;
+            entity.DeleteTime = DateTime.Now;
+            Context.Update(entity);
             await Context.SaveChangesAsync();
             return response;
         }
@@ -83,19 +83,24 @@ namespace NoteServer.Controllers
         /// 登陆<br/>
         /// - 通过Session保存登陆信息？
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="request"></param>
         [HttpGet("in")]
-        public void SignIn(User user)
+        public object SignIn(User request)
         {
+            var response = new ResponseBody();
 
+            return response;
         }
         /// <summary>
         /// 登出
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="request"></param>
         [HttpGet("out")]
-        public void SignOut(User user)
+        public object SignOut(User request)
         {
+            var response = new ResponseBody();
+
+            return response;
         }
     }
 }

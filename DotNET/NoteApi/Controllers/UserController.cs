@@ -39,7 +39,7 @@ namespace NoteServer.Controllers
         [HttpGet("list")]
         public object GetAll([FromQuery]PageRequest request)
         {
-            return Context.Set<User>().Where(a => !a.Deleted).OrderByDescending(a => a.CreateTime).List(request).Page(request);
+            return Context.Set<User>().Where(a => !a.Deleted).OrderByDescending(a => a.CreateTime).FilterAndSort(request).Page(request);
         }
 
         // http://localhost:5000/api/user/list/ids?[0]=0cab50ab-f571-4945-b3f5-88a3873f0139
@@ -61,17 +61,16 @@ namespace NoteServer.Controllers
             };
         }
 
-        [HttpGet("delete")]
-        public object Delete([FromQuery]User request)
+        [HttpGet("delete/{id}")]
+        public object Delete([FromRoute]string id)
         {
-            var entity = Context.Users.AsNoTracking().Where(a => (!a.Deleted) && a.Id.Equals(request.Id)).FirstOrDefault();
+            var entity = Context.Set<User>().AsNoTracking().Where(a => (!a.Deleted) && a.Id.Equals(id)).FirstOrDefault();
             if (entity == null)
             {
                 return new
                 {
                     Code = ResponseCode.NotFound,
                     Message = "找不到对象信息",
-                    Data = request
                 };
             }
             entity.Deleted = true;
@@ -82,7 +81,7 @@ namespace NoteServer.Controllers
             return new
             {
                 Code = ResponseCode.Success,
-                Data = request
+                Data = entity
             };
         }
 

@@ -48,6 +48,21 @@ namespace NoteServer
         {
             // Crash & Exception Handler
             app.UseCrashHandler();
+            app.Use(async(context, next) =>
+            {
+                await next();
+            });
+            //app.Use(next =>
+            //{
+            //    return async context =>
+            //    {
+            //        await next(context);
+            //    };
+            //});
+            //app.Run(async context =>
+            //{
+            //    await context.Response.WriteAsync("中间件的终端");
+            //});
 
             if (env.IsDevelopment())
             {
