@@ -13,13 +13,14 @@ namespace NoteCore
     public static class IQueryableExtension
     {
         /// <summary>
-        /// 在内存中进行过滤排序操作
+        /// 过滤排序<br/>
+        /// - 在内存中进行
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static IQueryable<T> List<T>(this IQueryable<T> source, PageRequest request)
+        public static IQueryable<T> FilterAndSort<T>(this IQueryable<T> source, PageRequest request)
         {
             var query = source;
             BindingFlags flag = BindingFlags.Public | BindingFlags.IgnoreCase | BindingFlags.Instance;
