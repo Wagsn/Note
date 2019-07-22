@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NoteCore.Http
 {
@@ -14,7 +11,8 @@ namespace NoteCore.Http
     public class PageRequest
     {
         /// <summary>
-        /// 索引(PageIndex)
+        /// 索引(PageIndex)<br/>
+        /// - 默认0
         /// </summary>
         public int Index { get; set; } = 0;
         /// <summary>
@@ -23,11 +21,11 @@ namespace NoteCore.Http
         /// </summary>
         public int Size { get; set; } = 20;
         /// <summary>
-        /// 排序
+        /// 排序（多重排序）
         /// </summary>
         public IList<SortItem> Sorts { get; set; }
         /// <summary>
-        /// 筛选
+        /// 筛选列表
         /// </summary>
         public IList<FilterItem> Filters { get; set; }
     }
@@ -38,9 +36,10 @@ namespace NoteCore.Http
     public class FilterItem
     {
         /// <summary>
-        /// 所在字段
+        /// 筛选字段名称<br/>
+        /// - 忽略大小写
         /// </summary>
-        [MaxLength(63)]
+        [Required(ErrorMessage = "请输入字段名")]
         public string Field { get; set; }
         /// <summary>
         /// 筛选方式<br/>
@@ -60,9 +59,10 @@ namespace NoteCore.Http
     public class SortItem
     {
         /// <summary>
-        /// 所在字段
+        /// 所在字段<br/>
+        /// - 忽略大小写
         /// </summary>
-        [MaxLength(63)]
+        [Required(ErrorMessage ="请输入字段名")]
         public string Field { get; set; }
         /// <summary>
         /// 是否降序 <br/>

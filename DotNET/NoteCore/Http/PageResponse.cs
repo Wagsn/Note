@@ -20,7 +20,7 @@ namespace NoteCore.Http
         /// <summary>
         /// 分页数量 PageCount
         /// </summary>
-        public int Count { get; set; }
+        public int Count { get => (int)Math.Ceiling((double)Total / Size); }
         /// <summary>
         /// 对象总数 TotalCount
         /// </summary>

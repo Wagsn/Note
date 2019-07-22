@@ -9,6 +9,7 @@ using NoteServer.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace NoteServer.Controllers
@@ -29,6 +30,34 @@ namespace NoteServer.Controllers
             Context = context ?? throw new ArgumentNullException(nameof(context));
             Config = config ?? throw new ArgumentNullException(nameof(config));
             //Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
+        [HttpPost("test")]
+        public object TestDynamicExpression([FromBody]PageRequest request)
+        {
+            // 键选择器，用户排序
+            //var type = typeof(User);
+            //var propName = "NickName";
+            //var param = Expression.Parameter(type, type.Name);
+            //var body = Expression.Property(param, propName);
+            //var keySelector = Expression.Lambda(body, param);
+            //var list = Queryable.OrderBy(Context.Set<User>(), (dynamic)keySelector);
+            //var list2 = Context.Set<User>().OrderBy((Expression<Func<User, string>>)keySelector);
+            //var list3 = Context.Set<User>().OrderBy("NickName");
+            //var orderStrList = new string[] { "NickName", "Email" };
+            //var orderQuery = Context.Set<User>().OrderBy(orderStrList[0]);
+            //for(var i=1; i < orderStrList.Count(); i++)
+            //{
+            //    orderQuery = orderQuery.ThenBy(orderStrList[i]);
+            //}
+            //var list4 = orderQuery.ToList();
+            var list5 = Context.Set<User>().FilterAndSort(request).ToList();
+
+            return new
+            {
+                Code = 0,
+                Data = list5
+            };
         }
 
         /// <summary>
