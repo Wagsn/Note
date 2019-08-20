@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteApi", "NoteApi\NoteApi.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7E299AB7-0CB9-408E-8A30-D82A6D99AD36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteTest", "NoteTest\NoteTest.csproj", "{572D5DC5-7C9D-4D53-8CDD-E98F2BE776B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteTest", "NoteTest\NoteTest.csproj", "{572D5DC5-7C9D-4D53-8CDD-E98F2BE776B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSWWW", "WSWWW\WSWWW.csproj", "{53FDD0A5-A243-41F2-8304-681124F84D96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{572D5DC5-7C9D-4D53-8CDD-E98F2BE776B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{572D5DC5-7C9D-4D53-8CDD-E98F2BE776B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{572D5DC5-7C9D-4D53-8CDD-E98F2BE776B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FDD0A5-A243-41F2-8304-681124F84D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FDD0A5-A243-41F2-8304-681124F84D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FDD0A5-A243-41F2-8304-681124F84D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FDD0A5-A243-41F2-8304-681124F84D96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

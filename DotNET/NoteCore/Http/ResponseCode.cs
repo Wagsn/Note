@@ -30,7 +30,7 @@ namespace NoteCore.Http
         /// - 新增的对象已存在与数据库
         /// </summary>
         [Description("对象已存在")]
-        ObjectAlreadyExists = 102,
+        AlreadyExists = 102,
         /// <summary>
         /// 局部已失效<br/>
         /// - 复数参数中部分无效
@@ -43,7 +43,7 @@ namespace NoteCore.Http
         [Description("请求体错误")]
         ArgumentError = 400,
         /// <summary>
-        /// 未找到对应信息
+        /// 未找到对象信息
         /// </summary>
         [Description("未找到对应信息")]
         NotFound = 404,

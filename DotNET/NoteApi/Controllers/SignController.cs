@@ -18,8 +18,15 @@ namespace NoteServer.Controllers
     //[ApiController]  // 会将模型验证失败转换成400错误返回
     public class SignController : ControllerBase
     {
+        /// <summary>
+        /// 数据库上下文
+        /// </summary>
         public AppDbContext Context { get; }
 
+        /// <summary>
+        /// 构造器
+        /// </summary>
+        /// <param name="context"></param>
         public SignController(AppDbContext context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
@@ -35,7 +42,7 @@ namespace NoteServer.Controllers
             var response = new ResponseBody();
             if(await Context.Set<User>().AnyAsync(a => (!a.Deleted) && a.Email.Equals(request.Email)))
             {
-                response.Code = ResponseCode.ObjectAlreadyExists;
+                response.Code = ResponseCode.AlreadyExists;
                 response.Message = "该账户已经存在";
             }
             var now = DateTime.Now;

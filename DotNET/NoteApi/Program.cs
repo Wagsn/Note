@@ -13,6 +13,8 @@ using NoteServer.Stores;
 
 namespace NoteServer
 {
+    /// <summary>
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)

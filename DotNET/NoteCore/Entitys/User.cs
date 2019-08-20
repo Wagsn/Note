@@ -55,4 +55,12 @@ namespace NoteCore.Entitys
         /// </summary>
         public DateTime? DeleteTime { get; set; }
     }
+
+    /// <summary>
+    /// 用户资源
+    /// </summary>
+    public class UserResource
+    {
+        
+    }
 }
