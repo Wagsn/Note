@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{155FD79C-A14D-463B-B38F-4EA0EE328B98}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>NoteWinform</RootNamespace>
     <AssemblyName>Note</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -185,6 +185,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,12 +211,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PopBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PopBox.Designer.cs">
+      <DependentUpon>PopBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TableForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\TableForm.Designer.cs">
       <DependentUpon>TableForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +283,10 @@
     <ProjectReference Include="..\NoteWinCore\NoteWinCore.csproj">
       <Project>{7c28003a-e56a-4424-98d2-b4464f03d47a}</Project>
       <Name>NoteWinCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WS.Log\WS.Log.csproj">
+      <Project>{024848B7-E492-450F-A6F5-10362709F900}</Project>
+      <Name>WS.Log</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

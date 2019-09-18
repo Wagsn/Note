@@ -39,6 +39,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "添加新的笔记";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Note_Add_Click);
             // 
             // MainForm
             // 
