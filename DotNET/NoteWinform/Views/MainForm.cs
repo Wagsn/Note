@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,13 @@ namespace NoteWinform.Views
         {
             Logger.Log($"[{nameof(Note_Add_Click)}] {sender} {e} Click!");
 
-            
+            EditForm edit = new EditForm();
+            edit.ShowDialog();
+            using (var context = new NoteWinCore.Stores.AppDbContext())
+            {
+                var notes = context.Notes.AsNoTracking().ToList();
+                Logger.Log($"[{nameof(Note_Add_Click)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
+            }
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.TitieEdit = new System.Windows.Forms.TextBox();
             this.ContentEdit = new System.Windows.Forms.RichTextBox();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TitieEdit
@@ -56,11 +57,23 @@
             this.ContentEdit.TabIndex = 1;
             this.ContentEdit.Text = "内容";
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.Location = new System.Drawing.Point(713, 415);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 2;
+            this.SaveButton.Text = "保存";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ContentEdit);
             this.Controls.Add(this.TitieEdit);
             this.Name = "EditForm";
@@ -74,5 +87,6 @@
 
         private System.Windows.Forms.TextBox TitieEdit;
         private System.Windows.Forms.RichTextBox ContentEdit;
+        private System.Windows.Forms.Button SaveButton;
     }
 }
