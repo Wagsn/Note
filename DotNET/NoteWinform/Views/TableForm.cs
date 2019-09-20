@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WS.Log;
 
 namespace NoteWinform.Views
 {
     public partial class TableForm : Form
     {
+        private ILogger Logger { get; } = LoggerManager.Get<TableForm>();
+
         public TableForm()
         {
             InitializeComponent();
@@ -27,6 +31,17 @@ namespace NoteWinform.Views
             Console.WriteLine("sender: " + sender + ", args: " + e);
             var gridView = sender as DataGridView;
             //Console.WriteLine("Text: "+gridView.Get);
+        }
+
+        private void TableForm_Load(object sender, EventArgs e)
+        {
+            using (var context = new NoteWinCore.Stores.AppDbContext())
+            {
+                var notes = context.Notes.AsNoTracking().ToList();
+                Logger.Log($"[{nameof(TableForm_Load)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
+
+                Table.DataSource = notes;
+            }
         }
     }
 }

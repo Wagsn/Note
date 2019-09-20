@@ -11,6 +11,10 @@ namespace WS.Log
     {
         LogConfig Config { get; set; }
 
-        void Log(string message, LogOption option = default(LogOption));
+        void Log<TState>(TState state, Exception exception, Func<TState, Exception, string> formatter, LogLevel logLevel = LogLevel.Trace);
+
+        void Log<TState>(TState state, Func<TState, string> formatter, LogLevel logLevel = LogLevel.Trace);
+
+        void Log(string message, LogLevel option = LogLevel.Trace);
     }
 }

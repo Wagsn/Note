@@ -7,31 +7,39 @@ namespace WS.Log
     /// <summary>
     /// 日志等级
     /// </summary>
-    public enum LogOption
+    public enum LogLevel
     {
         /// <summary>
-        /// 调试
+        /// 没有
         /// </summary>
-        Debug,
+        None = 0,
         /// <summary>
         /// 痕迹
         /// </summary>
-        Trace,
+        Trace = 1,
+        /// <summary>
+        /// 调试
+        /// </summary>
+        Debug = 2,
         /// <summary>
         /// 提示
         /// </summary>
-        Info,
+        Info = 4,
         /// <summary>
         /// 警告
         /// </summary>
-        Warn,
+        Warn = 8,
         /// <summary>
         /// 错误
         /// </summary>
-        Error,
+        Error = 16,
         /// <summary>
         /// 致命
         /// </summary>
-        Fatal
+        Fatal = 32,
+        /// <summary>
+        /// 所有
+        /// </summary>
+        All = 63
     }
 }

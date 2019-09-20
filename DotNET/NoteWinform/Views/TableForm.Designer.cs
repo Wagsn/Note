@@ -98,6 +98,7 @@
             this.Controls.Add(this.Table);
             this.Name = "TableForm";
             this.Text = "NoteListForm";
+            this.Load += new System.EventHandler(this.TableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
             this.ResumeLayout(false);
 

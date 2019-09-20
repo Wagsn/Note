@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 namespace NoteCore
 {
     /// <summary>
-    /// IQueryable Extension<br/>
+    /// IQueryable Extension
     /// </summary>
     public static class QueryableExtension
     {

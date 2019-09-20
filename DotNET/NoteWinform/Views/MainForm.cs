@@ -32,5 +32,18 @@ namespace NoteWinform.Views
                 Logger.Log($"[{nameof(Note_Add_Click)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
             }
         }
+
+        private void NewMenuItem_Click(object sender, EventArgs e)
+        {
+            Logger.Log($"[{nameof(NewMenuItem_Click)}] {sender} {e} Click!");
+
+            EditForm edit = new EditForm();
+            edit.ShowDialog();
+            using (var context = new NoteWinCore.Stores.AppDbContext())
+            {
+                var notes = context.Notes.AsNoTracking().ToList();
+                Logger.Log($"[{nameof(NewMenuItem_Click)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
+            }
+        }
     }
 }
