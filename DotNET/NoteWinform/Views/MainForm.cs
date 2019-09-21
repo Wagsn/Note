@@ -14,23 +14,11 @@ namespace NoteWinform.Views
     public partial class MainForm : Form
     {
         private ILogger Logger { get; } = LoggerManager.Get<MainForm>();
+        private List<NoteCore.Entitys.Note> Notes { get; set; }
 
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void Note_Add_Click(object sender, EventArgs e)
-        {
-            Logger.Log($"[{nameof(Note_Add_Click)}] {sender} {e} Click!");
-
-            EditForm edit = new EditForm();
-            edit.ShowDialog();
-            using (var context = new NoteWinCore.Stores.AppDbContext())
-            {
-                var notes = context.Notes.AsNoTracking().ToList();
-                Logger.Log($"[{nameof(Note_Add_Click)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
-            }
         }
 
         private void NewMenuItem_Click(object sender, EventArgs e)
@@ -39,11 +27,32 @@ namespace NoteWinform.Views
 
             EditForm edit = new EditForm();
             edit.ShowDialog();
+            //if(edit.DialogResult == DialogResult.OK)
+            //{
+
+            //}
             using (var context = new NoteWinCore.Stores.AppDbContext())
             {
-                var notes = context.Notes.AsNoTracking().ToList();
-                Logger.Log($"[{nameof(NewMenuItem_Click)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
+                //Notes.Clear();
+                //Notes.AddRange(context.Notes.AsNoTracking().ToList());
+                //Table.Rows.Clear();
+                Table.DataSource = context.Notes.AsNoTracking().ToList();
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            using (var context = new NoteWinCore.Stores.AppDbContext())
+            {
+                Notes = context.Notes.AsNoTracking().ToList();
+                Logger.Log($"[{nameof(MainForm_Load)}] {string.Join(", ", Notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
+
+                Table.DataSource = Notes;
+            }
+        }
+
+        private void Table_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }

@@ -27,6 +27,11 @@ namespace NoteWinform
             {
                 context.Database.EnsureCreated();
 
+                if(context.Users.Any() || context.Notes.Any() || context.NoteUserRelations.Any())
+                {
+                    return;
+                }
+
                 var wagsn = new NoteCore.Entitys.User
                 {
                     Id = Guid.NewGuid().ToString(),

@@ -16,6 +16,8 @@ namespace NoteWinform.Views
     {
         private ILogger Logger { get; } = LoggerManager.Get<TableForm>();
 
+        private List<NoteCore.Entitys.Note> Notes { get; set; }
+
         public TableForm()
         {
             InitializeComponent();
@@ -37,10 +39,10 @@ namespace NoteWinform.Views
         {
             using (var context = new NoteWinCore.Stores.AppDbContext())
             {
-                var notes = context.Notes.AsNoTracking().ToList();
-                Logger.Log($"[{nameof(TableForm_Load)}] {string.Join(", ", notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
+                Notes = context.Notes.AsNoTracking().ToList();
+                Logger.Log($"[{nameof(TableForm_Load)}] {string.Join(", ", Notes.Select(a => $"[Title: {a.Title}, Content: {a.Content}]"))}");
 
-                Table.DataSource = notes;
+                Table.DataSource = Notes;
             }
         }
     }

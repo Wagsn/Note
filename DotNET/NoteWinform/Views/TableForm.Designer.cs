@@ -33,7 +33,7 @@
             this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deleted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DeleteTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.SuspendLayout();
@@ -59,17 +59,20 @@
             // 
             // Title
             // 
+            this.Title.DataPropertyName = "Title";
             this.Title.HeaderText = "标题";
             this.Title.Name = "Title";
             // 
             // Content
             // 
+            this.Content.DataPropertyName = "Content";
             this.Content.HeaderText = "内容";
             this.Content.Name = "Content";
             this.Content.Width = 300;
             // 
             // CreateTime
             // 
+            this.CreateTime.DataPropertyName = "CreateTime";
             this.CreateTime.HeaderText = "创建时间";
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -77,16 +80,21 @@
             // 
             // UpdateTime
             // 
+            this.UpdateTime.DataPropertyName = "UpdateTime";
             this.UpdateTime.HeaderText = "更新时间";
             this.UpdateTime.Name = "UpdateTime";
             // 
             // Deleted
             // 
+            this.Deleted.DataPropertyName = "Deleted";
             this.Deleted.HeaderText = "是否删除";
             this.Deleted.Name = "Deleted";
+            this.Deleted.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Deleted.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // DeleteTime
             // 
+            this.DeleteTime.DataPropertyName = "DeleteTime";
             this.DeleteTime.HeaderText = "删除时间";
             this.DeleteTime.Name = "DeleteTime";
             // 
@@ -111,7 +119,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Content;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn UpdateTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Deleted;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Deleted;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeleteTime;
     }
 }
