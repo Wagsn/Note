@@ -119,7 +119,6 @@ namespace NoteServer.Stores
             var index = request.Index;
             var size = request.Size;
             var total = query.Count();
-            var count = (int)Math.Ceiling((double)total / request.Size);
             // 分页
             query = query.Skip(request.Index * request.Size).Take(request.Size);
             return new PageResponse<T>
@@ -128,7 +127,6 @@ namespace NoteServer.Stores
                 Index = index,
                 Size = size,
                 Total = total,
-                Count = count
             };
         }
     }
