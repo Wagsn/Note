@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".htmlTest.HTMLTestActivity"
+    tools:context="net.wagsn.test.HTMLTestActivity"
     android:orientation="vertical">
 
     <Button

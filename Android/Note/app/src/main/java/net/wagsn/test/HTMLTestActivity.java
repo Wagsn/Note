@@ -1,4 +1,4 @@
-package net.wagsn.note.htmlTest;
+package net.wagsn.test;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

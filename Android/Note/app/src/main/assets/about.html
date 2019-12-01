@@ -11,7 +11,7 @@
         <span >Note</span>
     </div>
     <div style="text-align:center">
-        <span >Version 0.1.0</span>
+        <span id="version">Version</span>
     </div>
 </div>
 <div style="text-align:center; margin-top:60">
@@ -23,4 +23,8 @@
     <p>All Rights Reserved.</p>
 </div>
 </body>
+<script>
+    var version = document.getElementById("version");
+    version.innerHTML = note.version();
+</script>
 </html>

@@ -7,9 +7,9 @@ android {
         applicationId "net.wagsn.note"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode 9
+        versionCode getVersion("code")
         description "本次版本更新了：\r\n【文本编辑】修复内容编辑框背景颜色。"
-        versionName "1.0.7.190702_base" // 软件版本号由四部分组成，[主版本号].[子版本号].[阶段版本号].[日期版本号]_[希腊字母版本号]，希腊字母版本号共有5种，分别为：base、alpha、beta、RC、release。例如：1.1.1.051021_beta
+        versionName getVersion("name")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,6 +34,24 @@ greendao {
     targetGenDir 'src/main/java'
     // dao 生成包
     daoPackage "${android.defaultConfig.applicationId}.storage.db"
+}
+
+// 主版本号.子版本号.修正版本号 Major.Minor[.Patch[.Build[-Suffix]]] 语义化版本号：https://semver.org/lang/zh-CN/
+// [主版本号].[子版本号].[阶段/修复版本号].[日期/编译版本号]-[希腊字母版本号]，希腊字母版本号共有5种，分别为：base、alpha、beta、rc、release。例如：1.1.1.051021_beta
+def getVersion(type){
+    int major = 0
+    int minor = 1
+    int patch = 7
+    int build = Integer.parseInt(new Date().format("yyMMdd", TimeZone.getTimeZone("GMT+08:00")))
+    if("code" == type){
+        int code = major
+        code = (int)Math.pow(10, minor.toString().length()+1)*code+minor
+        code = (int)Math.pow(10, patch.toString().length()+1)*code+patch
+        code = (int)Math.pow(10, build.toString().length()+1)*code+build
+        return code
+    }else {
+        return "${major.toString()}.${minor.toString()}.${patch.toString()}.${build.toString()}-base"
+    }
 }
 
 dependencies {
