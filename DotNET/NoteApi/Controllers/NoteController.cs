@@ -19,11 +19,19 @@ namespace NoteServer.Controllers
     {
         private AppDbContext Context { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public NoteController(AppDbContext context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("list")]
         public object GetAll()
         {
@@ -33,7 +41,11 @@ namespace NoteServer.Controllers
                 Data = Context.Notes.Where(a => !a.Deleted).ToList()
             };
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpGet("delete")]
         public object Delete([FromQuery]Note request)
         {
@@ -59,6 +71,11 @@ namespace NoteServer.Controllers
             };
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpGet("save")]
         public object Save([FromQuery]Note request)
         {

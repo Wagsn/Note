@@ -45,9 +45,8 @@ def getVersion(type){
     int build = Integer.parseInt(new Date().format("yyMMdd", TimeZone.getTimeZone("GMT+08:00")))
     if("code" == type){
         int code = major
-        code = (int)Math.pow(10, minor.toString().length()+1)*code+minor
-        code = (int)Math.pow(10, patch.toString().length()+1)*code+patch
-        code = (int)Math.pow(10, build.toString().length()+1)*code+build
+        code = (int)Math.pow(10, 2)*code+minor
+        code = (int)Math.pow(10, 3)*code+patch
         return code
     }else {
         return "${major.toString()}.${minor.toString()}.${patch.toString()}.${build.toString()}-base"

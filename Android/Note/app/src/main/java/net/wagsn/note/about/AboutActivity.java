@@ -5,12 +5,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
 import net.wagsn.note.R;
 
 public class AboutActivity extends AppCompatActivity {
+    public static String TAG = "AboutActivity";
 
     WebView webView;
 
@@ -37,6 +39,7 @@ public class AboutActivity extends AppCompatActivity {
         try {
             packageInfo=packageManager.getPackageInfo(this.getPackageName(),0);
             versionName=packageInfo.versionName;
+            Log.d(TAG, "version: code: "+packageInfo.versionCode+", name: "+packageInfo.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
